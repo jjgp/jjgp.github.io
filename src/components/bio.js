@@ -16,10 +16,11 @@ function Bio() {
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author } = data.site.siteMetadata
+        const { author, description } = data.site.siteMetadata
         return (
           <div
             style={{
+              alignItems: `center`,
               display: `flex`,
               marginBottom: rhythm(2.5),
             }}
@@ -37,9 +38,7 @@ function Bio() {
                 borderRadius: `50%`,
               }}
             />
-            <p>
-              Written by <strong>{author}</strong>.
-            </p>
+            <span>{description}</span>
           </div>
         )
       }}
@@ -59,6 +58,7 @@ const bioQuery = graphql`
     site {
       siteMetadata {
         author
+        description
       }
     }
   }

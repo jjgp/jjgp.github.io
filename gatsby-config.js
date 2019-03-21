@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `JJGP`,
     author: `Jason Prasad`,
-    description: ``,
+    description: `Posts by Jason Prasad`,
     siteUrl: `https://jjgp.github.io`,
     social: {},
   },
@@ -61,7 +61,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/icon.png`,
       },
     },
     `gatsby-plugin-offline`,
