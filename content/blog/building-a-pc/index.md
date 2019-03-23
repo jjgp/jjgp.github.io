@@ -9,9 +9,9 @@ description: For machine and continued learning
 Having read a few posts about building a computer for machine and deep learning
 I had become inspired to build one of my own.
 
-- [Build and Setup Your Own Deep Learning Server From Scratch](https://towardsdatascience.com/build-and-setup-your-own-deep-learning-server-from-scratch-e771dacaa252)
-- [Build your own top-spec remote-access Machine Learning rig: ...](https://medium.com/@aragalie/build-your-own-top-spec-remote-access-machine-learning-rig-a-very-detailed-assembly-and-dae0f4011a8f)
-- [How to build the perfect Deep Learning Computer and save thousands of dollars](https://medium.com/the-mission/how-to-build-the-perfect-deep-learning-computer-and-save-thousands-of-dollars-9ec3b2eb4ce2)
+> - [Build and Setup Your Own Deep Learning Server From Scratch](https:// towardsdatascience.com/build-and-setup-your-own-deep-learning-server-from-scratch-e771dacaa252)
+> - [Build your own top-spec remote-access Machine Learning rig: ...](https://medium.com/@aragalie/build-your-own-top-spec-remote-access-machine-learning-rig-a-very-detailed-assembly-and-dae0f4011a8f)
+> - [How to build the perfect Deep Learning Computer and save thousands of dollars](https://medium.com/the-mission/how-to-build-the-perfect-deep-learning-computer-and-save-thousands-of-dollars-9ec3b2eb4ce2)
 
 Of course there are resources in the wild to utilize GPUs that are either free
 or cheap ([Azure](https://notebooks.azure.com/),
