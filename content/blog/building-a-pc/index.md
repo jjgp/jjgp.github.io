@@ -42,29 +42,29 @@ did make sure to pick a motherboard, CPU, and PSU could support more GPUs or
 other PCIe devices in the future. In researching which GPU to use I defaulted
 to the judgment outlined in the following: [Which GPU(s) to Get for Deep Learning: ...](http://timdettmers.com/2018/11/05/which-gpu-for-deep-learning/)
 
-A few things need for setup include: a grounding cable, thermal paste,
-Isopropyl alcohol, and a magnetic screw set. The grounding cable is worn at all
-times during assembly. The thermal paste is to ensure the heat transfer between
+A few things needed for setup include: a grounding cable, thermal paste,
+isopropyl alcohol, and a magnetic screw set. The grounding cable is worn at all
+times during assembly. The thermal paste is to facilitate the heat transfer between
 the CPU and the cooler. The Corsair H100i v2 came with some thermal paste on 
-it. I opted to clean that off with alcohol and apply the thermal paste I had
+it. I opted to clean that off with isopropyl alcohol and apply the thermal paste I had
 bought.
 
 ## Putting it Together
 
 The most time consuming part of putting the computer together (from the 
-perspective of a noob) is gathering the information on assembly. I watched
+perspective of a noob) is gathering the information about assembly. I watched
 a lot of YouTube, read blog posts, and reread the manuals. The most
 informative video I found (and mentioned in one of the blogs above) is
 [Fractal Design Define C TG / MSI X399 Gaming Pro Carbon](https://www.youtube.com/watch?v=83mA2TGNRCU).
-After gaining a little familiarity with the whole process I began assembly. It
-is typically recommended to assembly the motherboard, CPU, CPU cooler, SSD, and
+After becoming somewhat familiar with the whole process I began assembly. It
+is recommended to assemble the motherboard, CPU, CPU cooler, SSD, and
 RAM outside of the case to power it on and inspect for parts that may be DOA.
 I just followed the steps in the aformentioned Fractal Design video and forewent
-powering it on outside as the parts were swimming in space in the Corsair Air
+powering it on outside because the parts were swimming in space in the Corsair Air
 540 and easy to assemble / disassemble.
 
-A few tidbits that caused some confusion and specific to the parts mentioned
-follow: The hard drive bays in the Corsair Air 540 took more force than I had
+A few tidbits that caused some confusion and specific to this setup are as 
+follows: The hard drive bays in the Corsair Air 540 took more force than I had
 realized to properly attach. The post codes on the Dr. Debug output were at
 first esoteric and I had to research the forums ([Dr. Debug display AA](http://forum.asrock.com/forum_posts.asp?TID=3110&title=dr-debug-display-aa))
 and consult the manual. The Taichi BIOS will show the CPU temperature as higher
@@ -77,9 +77,9 @@ to mark the positive leads.
 As is recommended by the sources I have read and personally, Windows is best 
 installed first. The Taichi BIOS update software only supports Windows and 
 having a partition for it serves as a failsafe. To install Windows I created
-a UEFI GPT bootable USB with a Windows installer and using Rufus. As I have a
+a UEFI GPT bootable USB with a Windows installer and using Rufus. Since I have a
 Mac I had to install Windows through Bootcamp to accomplish this. After
-creating the bootable USB I chose it as the boot media through the Taichi
+creating the bootable USB, I selected it as the boot media through the Taichi
 BIOS and followed the steps to install.
 
 Once Windows was installed on the Samsung 960 EVO I installed the following
