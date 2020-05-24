@@ -6,7 +6,6 @@ module.exports = {
     siteUrl: `https://jjgp.github.io`,
     social: {},
   },
-  pathPrefix: '/',
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
