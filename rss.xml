@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[JJGP]]></title><description><![CDATA[Posts by Jason Prasad]]></description><link>https://jjgp.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 24 May 2020 16:47:15 GMT</lastBuildDate><item><title><![CDATA[Notes on Molecular Transformer]]></title><description><![CDATA[WIP]]></description><link>https://jjgp.github.io/molecular-transformer/</link><guid isPermaLink="false">https://jjgp.github.io/molecular-transformer/</guid><pubDate>Sun, 24 May 2020 12:32:48 GMT</pubDate><content:encoded>&lt;p&gt;WIP&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Building a PC]]></title><description><![CDATA[Having read a few posts about building a computer for machine and deep learning
+I had become inspired to build one of my own. Build and…]]></description><link>https://jjgp.github.io/building-a-pc/</link><guid isPermaLink="false">https://jjgp.github.io/building-a-pc/</guid><pubDate>Thu, 21 Mar 2019 14:40:45 GMT</pubDate><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b2dd0849560a0528e6cd861b7584bcdf/bff4e/pc.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 93.91891891891892%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAAAsSAAALEgHS3X78AAAEmElEQVQ4yy2U2W5bVRSG/QLQNkkdz/MYz/FsJ/bxcDyd2HHszM6c1B0ELaWtKmYxqBVSe9ciEFIuQAIkJFSEEHeIC14A3oHn+Fg+cPFrnb3P3muv9a/1L8PXn7/Pzt4+R+Mu6z2Vrlql323o0FoK3WaVdfneHWlMtvrsjzX2xj1OJ2O21ru8NT3kp8vnPH33TSYbbQw7Wo1YKk2j1aKwUmG5UBSUSOYKJLJ5YuksS8lllhIpImLjsk5kckSX04QTSUGKs5MJ96YTxpqCIb0cR+100TZGdNb6qF2NZrdHvd2h3upQU9sozZbYllhV32vIeR3tme2htLrUVZVWvYSht6ZxfHGLo/MbgimHZzc4OLtgcnrO/skZk5NzHftHp+wfC45O/rOCifw/krPHcvd0epuLm7cwFEt51iS6WQRqb4322rrYPr3hiLXRFt31kUSs0dIGdAdDtOEsk9n3OgO5NxyN2d7d40CcH59fYKhVi6xUFRwuJ3anA5fHQ28wIrgUxRsIYTRbsTrdOhweHx7Zc/tDVOtN6s06uXyWRrPJoWS0sTnGoKxkKVcqFAo5/Wc4skRTog2Fg0QTCTob2/KYG6PJhMVm5ercNVrC24GkrNQVCsU8VUVhZ3KI2lalKKkw2UKe0daY8+mUwfoGHUm9otSoNlp0RzvYXS5xuMii2cTrV68w3Nxic3dfHNYolktyVmFje5dyuYBhKejUo9o72Ofh48ec3rjFnXsPOL/1Br3+EJfbhVNgsVoxW0yYxHGt0WC0ucnKaplMNs2qUhWahmQyCQzhgB2vzyPkD+gMBmTLFTb2TxkfXNBe3yaZX8EXjujc2d0eLA4HgaUIqWwWfziELxSktLoqLdQhlQxjiIdd+ANeoqkUHrnoj6coqX0KzT7ZWk+3oeUCZimKxeXF6vZi9wYwWm1YXR5cfj+5ohRW0k4ng1KUYpRg0IM3GNQdFmptav0xZVVD0YZkq00yVZVcrUMolRVnfhYskr7DiUuint3LFAos5zLk0xKhVhcJBd34AgHsHq/uNChR5ip11MEGUZGfLyayy+RxSrtct9hYMFvEWnH4/EJFQJyJFOMRVvIRDNu9EtGQC7fPi8XpwmR36LAGfTgLcbzxGPOLZox2G+5kDJNUfH7RxLzJzKLNjsvrIZnJEIkEUFelKOdbDUrpIOGloPDk0g/ZpIEP7t7nzkefkK81eG1ujqxS57PLH9i+eZe5xcX/HdpwetzEllMkoj76zQyGu4caO70yhVxKiLZjlFS8opLnl9/zza9/kKs2uDK/QDRf4Pazp+w+vK8/es1oZEGa3SoKywh/W9oKe2syHJ49OuHJ24cy8xTm5FWj9JtbiI7ImFrtrBFKprh23YhZUo0IV75YTE/56sKCODSKJJ3Ua2Wev3fOozMNwy9ffMDv3z7lwXSH1xeuSxV9EmEEuxBu9wdwCJyBIDbZn1V4Vgh9LZqfKcdst8vw7fDb5ad8+fEUw9+vXvDPn9/x48sPUWWetRortJoV1MYqSqVIsZgmn0vqKkin48QTERLJqCAmeg+wFAnx1ZMH/PXzS169eId/AZ7TjczPXXoFAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;pc&quot;
+        title=&quot;&quot;
+        src=&quot;/static/b2dd0849560a0528e6cd861b7584bcdf/fcda8/pc.png&quot;
+        srcset=&quot;/static/b2dd0849560a0528e6cd861b7584bcdf/12f09/pc.png 148w,
+/static/b2dd0849560a0528e6cd861b7584bcdf/e4a3f/pc.png 295w,
+/static/b2dd0849560a0528e6cd861b7584bcdf/fcda8/pc.png 590w,
+/static/b2dd0849560a0528e6cd861b7584bcdf/efc66/pc.png 885w,
+/static/b2dd0849560a0528e6cd861b7584bcdf/c83ae/pc.png 1180w,
+/static/b2dd0849560a0528e6cd861b7584bcdf/bff4e/pc.png 2660w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Having read a few posts about building a computer for machine and deep learning
+I had become inspired to build one of my own.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://towardsdatascience.com/build-and-setup-your-own-deep-learning-server-from-scratch-e771dacaa252&quot;&gt;Build and Setup Your Own Deep Learning Server From Scratch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://medium.com/@aragalie/build-your-own-top-spec-remote-access-machine-learning-rig-a-very-detailed-assembly-and-dae0f4011a8f&quot;&gt;Build your own top-spec remote-access Machine Learning rig: …&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://medium.com/the-mission/how-to-build-the-perfect-deep-learning-computer-and-save-thousands-of-dollars-9ec3b2eb4ce2&quot;&gt;How to build the perfect Deep Learning Computer and save thousands of dollars&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Of course there are resources in the wild to utilize GPUs that are either free
+or cheap (&lt;a href=&quot;https://notebooks.azure.com/&quot;&gt;Azure&lt;/a&gt;,
+&lt;a href=&quot;https://www.paperspace.com/&quot;&gt;Paperspace&lt;/a&gt;,
+&lt;a href=&quot;https://towardsdatascience.com/kaggle-vs-colab-faceoff-which-free-gpu-provider-is-tops-d4f0cd625029&quot;&gt;Kaggle, and Colab&lt;/a&gt;),
+however, I wanted to experience more than that. I wanted to understand in
+greater detail what parts there were and how they went together. I wanted to
+know what is involved in setting up remote resources and even enable
+development from my Macbook or my iPad Pro with
+&lt;a href=&quot;https://www.termius.com/&quot;&gt;Termius&lt;/a&gt;, &lt;a href=&quot;https://github.com/blinksh/blink&quot;&gt;Blink&lt;/a&gt;, and &lt;a href=&quot;https://juno.sh/&quot;&gt;Juno&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;The Parts&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;CPU:&lt;/strong&gt; AMD Threadripper 2950X&lt;br&gt;
+&lt;strong&gt;CPU Cooler:&lt;/strong&gt; Corsair H100i v2&lt;br&gt;
+&lt;strong&gt;Motherboard:&lt;/strong&gt; ASRock X399 Taichi&lt;br&gt;
+&lt;strong&gt;Memory:&lt;/strong&gt; Corsair Vengeance LPX 2 x 16 GB&lt;br&gt;
+&lt;strong&gt;Storage:&lt;/strong&gt; Samsung 960 EVO 500 GB M.2-2280 SSD, Seagate Barracuda 2 TB 3.5” HDD, WD 2 TB 3.5” HDD (repurposed from an external drive)&lt;br&gt;
+&lt;strong&gt;Video Card:&lt;/strong&gt; NVIDIA GeForce RTX 2070&lt;br&gt;
+&lt;strong&gt;Case:&lt;/strong&gt; Corsair Air 540&lt;br&gt;
+&lt;strong&gt;Power Supply:&lt;/strong&gt; Corsair 1000 W 80+ Platinum&lt;/p&gt;
+&lt;p&gt;Apart from perusing the aforementioned posts on building machine learning rigs,
+&lt;a href=&quot;https://pcpartpicker.com/user/jjgp/saved/33ZV6h&quot;&gt;PCPartPicker&lt;/a&gt; (links to my
+part list) and its compatibility check was perhaps the most informative
+resource. My process wasn’t very scientific and I even splurged on the CPU. I
+did make sure to pick a motherboard, CPU, and PSU could support more GPUs or
+other PCIe devices in the future. In researching which GPU to use I defaulted
+to the judgment outlined in the following: &lt;a href=&quot;http://timdettmers.com/2018/11/05/which-gpu-for-deep-learning/&quot;&gt;Which GPU(s) to Get for Deep Learning: …&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A few things needed for setup include: a grounding cable, thermal paste,
+isopropyl alcohol, and a magnetic screw set. The grounding cable is worn at all
+times during assembly. The thermal paste is to facilitate the heat transfer between
+the CPU and the cooler. The Corsair H100i v2 came with some thermal paste on
+it. I opted to clean that off with isopropyl alcohol and apply the thermal paste I had
+bought.&lt;/p&gt;
+&lt;h2&gt;Putting it Together&lt;/h2&gt;
+&lt;p&gt;The most time consuming part of putting the computer together (from the
+perspective of a noob) is gathering the information about assembly. I watched
+a lot of YouTube, read blog posts, and reread the manuals. The most
+informative video I found (and mentioned in one of the blogs above) is
+&lt;a href=&quot;https://www.youtube.com/watch?v=83mA2TGNRCU&quot;&gt;Fractal Design Define C TG / MSI X399 Gaming Pro Carbon&lt;/a&gt;.
+After becoming somewhat familiar with the whole process I began assembly. It
+is recommended to assemble the motherboard, CPU, CPU cooler, SSD, and
+RAM outside of the case to power it on and inspect for parts that may be DOA.
+I just followed the steps in the aformentioned Fractal Design video and forewent
+powering it on outside because the parts were swimming in space in the Corsair Air
+540 and easy to assemble / disassemble.&lt;/p&gt;
+&lt;p&gt;A few tidbits that caused some confusion and specific to this setup are as
+follows: The hard drive bays in the Corsair Air 540 took more force than I had
+realized to properly attach. The post codes on the Dr. Debug output were at
+first esoteric and I had to research the forums (&lt;a href=&quot;http://forum.asrock.com/forum_posts.asp?TID=3110&amp;#x26;title=dr-debug-display-aa&quot;&gt;Dr. Debug display AA&lt;/a&gt;)
+and consult the manual. The Taichi BIOS will show the CPU temperature as higher
+than it actually is (&lt;a href=&quot;http://forum.asrock.com/forum_posts.asp?TID=6912&amp;#x26;title=x399-taichi-cpu-temperature&quot;&gt;X399 Taichi CPU Temperature&lt;/a&gt;).
+The motherboard cables from the case to the power, reset, and LED had triangles
+to mark the positive leads.&lt;/p&gt;
+&lt;h2&gt;The OSes&lt;/h2&gt;
+&lt;p&gt;As is recommended by the sources I have read and personally, Windows is best
+installed first. The Taichi BIOS update software only supports Windows and
+having a partition for it serves as a failsafe. To install Windows I created
+a UEFI GPT bootable USB with a Windows installer and using Rufus. Since I have a
+Mac I had to install Windows through Bootcamp to accomplish this. After
+creating the bootable USB, I selected it as the boot media through the Taichi
+BIOS and followed the steps to install.&lt;/p&gt;
+&lt;p&gt;Once Windows was installed on the Samsung 960 EVO I installed the following
+apps for maintenance: &lt;a href=&quot;http://www.asrock.com/feature/appshop/&quot;&gt;ASRock APP Shop&lt;/a&gt;,
+&lt;a href=&quot;https://www.amd.com/en/technologies/ryzen-master&quot;&gt;AMD RYZEN Master&lt;/a&gt;, and
+&lt;a href=&quot;https://www.corsair.com/us/en/corsairlink&quot;&gt;CORSAIR LINK&lt;/a&gt;. With Windows I
+created a partition and a UEFI GPT bootable USB with the Ubuntu installer. To
+install I simply chose to boot from the USB from the BIOS and followed the
+install steps.&lt;/p&gt;
+&lt;h2&gt;Cuda Install&lt;/h2&gt;
+&lt;p&gt;The CUDA install was perhaps the most frustrating part. Mostly because there is
+a lot of information to digest at the &lt;a href=&quot;https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html&quot;&gt;NVIDIA CUDA Installation Guide for Linux&lt;/a&gt;
+and steps can be unclear such as which option to choose to download the
+&lt;a href=&quot;https://developer.nvidia.com/cuda-downloads&quot;&gt;CUDA Toolkit&lt;/a&gt;.
+The most straightforward way to go about it is outlined at the following:
+&lt;a href=&quot;https://www.pugetsystems.com/labs/hpc/How-To-Install-CUDA-10-together-with-9-2-on-Ubuntu-18-04-with-support-for-NVIDIA-20XX-Turing-GPUs-1236/&quot;&gt;How To Install CUDA 10…&lt;/a&gt;.
+In short, it’s to download the deb (network) CUDA Toolkit and follow the steps
+there. I had tried deb (local) and it just lead to unmet dependency issues.&lt;/p&gt;
+&lt;h2&gt;Remote Access&lt;/h2&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/30cb25d3d714537c337d401fa9b9cfb1/493ac/pi.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD9UlEQVQ4y02RW0zbZRiH/9dqcBTKoaUUSjnTQlmB0gOwUUAGFBiTo7DBoAwGjJNDBoPBwDHYxjiM00hwizgkE+JGFo3zEDdiorjFOBNxYbuYURNNTFATL4yPHyUaL57ku/me9/d7X+nRgw/o73BSlmOlvfog7TUFOIszqDyUSkV+CmWOJEqyLTiL7DQffonWI1l0Hz9ET8PLdNXm0vJKGs2l+2ku2Yczz4S09fQpC9Mj1BbamRxoYfb8q4z2N3Gus5b+tkq6Gktorcqjp7GYoZPljLxWydRAPXPnmrhyxslwe4mgmBFBb60D6cmTLd5dmqfvRCn3b1/jm/VbfHLnOqvXL3Nj5ixTQ630tx7mbFs5w52VXOyqZqzXycSZWka7jzIshoz31DDZW8P59jKkxZVVJqfGWbjYyR8/P+b37R95840JNu6t8uWnK7x/c5rVhRGWZwd4e6aXpekeV7rLp6u5IAaMC/lbE128M9vP4lgnUqEjhdCIcIrrmvj1l+95sPEFm4824O9t/vrzJ354vM7d1TkhHebm1T4xuJ3xvmMu6aXuKi6dPiqG9fHe4igfLU8gDYo9NVQVUllfx/z9DT7+dpNn27/xcHOLO7duMH9lkIoSB+VFBzhW4WCkt4mv7q3w7Ou7PPxwkftr82x+vsZ3n91mc30FaXl6kLWlOZqOOxkam6Dv2nWOj81Qe2EWW2Y2ccmp6OMTiDGZCY2OwRhv5NTJRl7v66CjxUlrwxE62+roOFFNW30FUm9bDac620jPcWCyJpEQb8JsMmFMtJFgP4AtK5/4/RnEWFLQ6gzIfXyRydxxl+3B7cXncXN7Dvc9L+Ahc8Nb7o6UV1TMwbJy8opLScvJxZqWSUJKGnutqRjMNgyJViJi49BG6VFpQ1AFBhKoCUStVuGn8kUlUKuVLgIDlEj55UcoddZRUFFFVmEp6XkFpGbnkZyZhTU9E4s9A6NIrjPGE6aPRhseRoBWg9JfhY/CB1+Bwk+Jf4A/miANUrojl4zcfOw76VLTiLclu4hNtBAtdqczGgmPjiYoLBy1VotfgBpflRJvIZJ7y/GUe7jYeXv7eiMl2dNIsqcLmZ3ElH2YkpKJs1qJEbJIg4GQqEghCxWpglAJmULlh49S4fq8I5F7ef4n3UFKsInl25JcEqPZQpzFyl6zGb1IFqbTERwRgSY0FLWo46f2x9dP4Urn9X+hCw/XW9IZYtDHGtCJNBF6PWFRUYRGRgpROJqQYNTiACqxH4Wo6aPcEXntVhWfPTxlyDx2Ly4TeIi3ZLPbsYna1h1E7X8xi/pxFouoHkeUGBimi0IrqgcGB+GvCRBpVeIYCtdhvHx2h8i9PfkH1ltbVmjy3uEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;pi&quot;
+        title=&quot;&quot;
+        src=&quot;/static/30cb25d3d714537c337d401fa9b9cfb1/fcda8/pi.png&quot;
+        srcset=&quot;/static/30cb25d3d714537c337d401fa9b9cfb1/12f09/pi.png 148w,
+/static/30cb25d3d714537c337d401fa9b9cfb1/e4a3f/pi.png 295w,
+/static/30cb25d3d714537c337d401fa9b9cfb1/fcda8/pi.png 590w,
+/static/30cb25d3d714537c337d401fa9b9cfb1/efc66/pi.png 885w,
+/static/30cb25d3d714537c337d401fa9b9cfb1/c83ae/pi.png 1180w,
+/static/30cb25d3d714537c337d401fa9b9cfb1/493ac/pi.png 4032w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Most of my use of the PC will be remotely. To facilitate that I set up the
+following: &lt;a href=&quot;https://help.ubuntu.com/community/WakeOnLan&quot;&gt;WakeOnLan&lt;/a&gt;,
+&lt;a href=&quot;https://help.ubuntu.com/lts/serverguide/openssh-server.html.en&quot;&gt;OpenSSH&lt;/a&gt;,
+&lt;a href=&quot;https://www.realvnc.com/&quot;&gt;Real VNC&lt;/a&gt;, and &lt;a href=&quot;https://www.noip.com/&quot;&gt;No-IP&lt;/a&gt;.
+As my router does not support the broadcasting of magic packets to wake the
+computer from a nonlocal network, I set up a Raspberry Pi on the local network
+to do so. Essentially I can SSH into the Raspberry Pi (even with &lt;a href=&quot;https://www.termius.com/&quot;&gt;Termius&lt;/a&gt;
+on my iPhone) and use &lt;a href=&quot;https://www.mkssoftware.com/docs/man1/etherwake.1.asp&quot;&gt;etherwake&lt;/a&gt;
+to turn on my PC.&lt;/p&gt;
+&lt;p&gt;The next things I’ve planned for my PC are to setup a development environment
+for machine learning!&lt;/p&gt;</content:encoded></item></channel></rss>
