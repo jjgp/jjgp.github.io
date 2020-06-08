@@ -1,7 +1,7 @@
 ---
 title: Building a PC
 date: "2019-03-21T14:40:45Z"
-description: For machine and continued learning
+description: Building a PC for machine and continued learning
 ---
 
 ![pc](./pc.png)
