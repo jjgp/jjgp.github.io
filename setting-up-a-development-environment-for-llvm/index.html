@@ -5,13 +5,14 @@ development environment to streamline my work with LLVM. The setup can be found 
 LLVM pass.</p>
 <p>The Dockerfile builds and Ubuntu 18.04 image with Clang, LLDB, and LLVM built with debug assertions enabled. This is
 necessary to enable the use of the <a href="https://llvm.org/docs/ProgrammersManual.html#the-llvm-debug-macro-and-debug-option">LLVM_DEBUG</a> macro. Having been my first time building the LLVM toolchain in a Docker
-image I did use <a href="https://github.com/pytorch/pytorch/blob/master/.circleci/docker/common/install_llvm.sh">Pytorch’s</a> CircleCI Dockerfile as a starting point. The image took over a half an hour to build on my 2015 MacBook Pro and needed
-more memory allotted in the Docker resource settings. Without bumping up the memory, the LLVM build process would run
-out of it and emit a failure. The actual built image may be found on dockerhub at <a href="https://hub.docker.com/repository/docker/jjgp/llvm-development">jjgp/llvm-development</a>.</p>
+image, I did use <a href="https://github.com/pytorch/pytorch/blob/master/.circleci/docker/common/install_llvm.sh">Pytorch’s</a> CircleCI Dockerfile as a starting point. The image took over a half an hour to build on my 2015 MacBook Pro and
+required more memory allotted in the Docker resource settings. Without bumping up the memory, the LLVM build process
+would run out of it and emit a failure. The actual built image may be found on dockerhub at
+<a href="https://hub.docker.com/repository/docker/jjgp/llvm-development">jjgp/llvm-development</a>.</p>
 <p>The VS Code <a href="https://code.visualstudio.com/docs/remote/remote-overview">Remote Development extension</a> pack allows for
-the development on a container. The jjgp/llvm-development Git repository has a <code class="language-text">devcontainer.json</code> that points to the
-aforementioned dockerhub image, adds a couple useful VS Code extensions, as well as an additional <code class="language-text">runArgs</code> step. The
-<code class="language-text">runArgs</code> step allows for the use of LLDB. Without it, there will be an error thrown when attempted to use LLDB to
+development in a container. The jjgp/llvm-development Git repository has a <code class="language-text">devcontainer.json</code> that points to the
+aforementioned dockerhub image, adds a couple useful VS Code extensions, as well as an additional <code class="language-text">runArgs</code>. The
+<code class="language-text">runArgs</code> allows for the use of LLDB. Without it, there will be an error thrown when attempting to use LLDB to
 debug a process such as LLVM’s <code class="language-text">opt</code> command.</p>
 <p>To run the sample pass in the Git repository simple do the following:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">mkdir build
@@ -19,8 +20,8 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Debug ..
 make</code></pre></div>
 <p>Note that passing the <code class="language-text">-DCMAKE_BUILD_TYPE=Debug</code> option retains the build symbols for debugging with GDB or LLDB.
-The above builds the SamplePass shared object that can be loaded for a LLVM pass with the <code class="language-text">opt</code> command. See the
-Makefile for an example of how to run the SamplePass.</p>
+The above builds the SamplePass shared object that can be loaded as an LLVM pass with the <code class="language-text">opt</code> command. See the
+Makefile in the root of the Git repository for an example of how to run the SamplePass.</p>
 <p>To debug the pass do the following from the root of the Git repository:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">clang -emit-llvm -S -fno-discard-value-names -c -o samples/hello_world.ll samples/hello_world.c
 gdb opt

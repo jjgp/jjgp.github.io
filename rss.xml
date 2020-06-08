@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[JJGP]]></title><description><![CDATA[Posts by Jason Prasad]]></description><link>https://jjgp.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Jun 2020 03:07:34 GMT</lastBuildDate><item><title><![CDATA[Setting up a development environment for LLVM]]></title><description><![CDATA[For my course in software analysis I found the need to assemble a
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[JJGP]]></title><description><![CDATA[Posts by Jason Prasad]]></description><link>https://jjgp.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Jun 2020 03:11:34 GMT</lastBuildDate><item><title><![CDATA[Setting up a development environment for LLVM]]></title><description><![CDATA[For my course in software analysis I found the need to assemble a
 development environment to streamline my work with LLVM. The setup can be…]]></description><link>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</link><guid isPermaLink="false">https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</guid><pubDate>Sun, 24 May 2020 15:38:44 GMT</pubDate><content:encoded>&lt;p&gt;For my course in &lt;a href=&quot;http://omscs.gatech.edu/cs-6340-software-analysis&quot;&gt;software analysis&lt;/a&gt; I found the need to assemble a
 development environment to streamline my work with LLVM. The setup can be found on GitHub at
 &lt;a href=&quot;https://github.com/jjgp/llvm-development&quot;&gt;jjgp/llvm-development&lt;/a&gt;.&lt;/p&gt;
@@ -6,13 +6,14 @@ development environment to streamline my work with LLVM. The setup can be found 
 LLVM pass.&lt;/p&gt;
 &lt;p&gt;The Dockerfile builds and Ubuntu 18.04 image with Clang, LLDB, and LLVM built with debug assertions enabled. This is
 necessary to enable the use of the &lt;a href=&quot;https://llvm.org/docs/ProgrammersManual.html#the-llvm-debug-macro-and-debug-option&quot;&gt;LLVM_DEBUG&lt;/a&gt; macro. Having been my first time building the LLVM toolchain in a Docker
-image I did use &lt;a href=&quot;https://github.com/pytorch/pytorch/blob/master/.circleci/docker/common/install_llvm.sh&quot;&gt;Pytorch’s&lt;/a&gt; CircleCI Dockerfile as a starting point. The image took over a half an hour to build on my 2015 MacBook Pro and needed
-more memory allotted in the Docker resource settings. Without bumping up the memory, the LLVM build process would run
-out of it and emit a failure. The actual built image may be found on dockerhub at &lt;a href=&quot;https://hub.docker.com/repository/docker/jjgp/llvm-development&quot;&gt;jjgp/llvm-development&lt;/a&gt;.&lt;/p&gt;
+image, I did use &lt;a href=&quot;https://github.com/pytorch/pytorch/blob/master/.circleci/docker/common/install_llvm.sh&quot;&gt;Pytorch’s&lt;/a&gt; CircleCI Dockerfile as a starting point. The image took over a half an hour to build on my 2015 MacBook Pro and
+required more memory allotted in the Docker resource settings. Without bumping up the memory, the LLVM build process
+would run out of it and emit a failure. The actual built image may be found on dockerhub at
+&lt;a href=&quot;https://hub.docker.com/repository/docker/jjgp/llvm-development&quot;&gt;jjgp/llvm-development&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The VS Code &lt;a href=&quot;https://code.visualstudio.com/docs/remote/remote-overview&quot;&gt;Remote Development extension&lt;/a&gt; pack allows for
-the development on a container. The jjgp/llvm-development Git repository has a &lt;code class=&quot;language-text&quot;&gt;devcontainer.json&lt;/code&gt; that points to the
-aforementioned dockerhub image, adds a couple useful VS Code extensions, as well as an additional &lt;code class=&quot;language-text&quot;&gt;runArgs&lt;/code&gt; step. The
-&lt;code class=&quot;language-text&quot;&gt;runArgs&lt;/code&gt; step allows for the use of LLDB. Without it, there will be an error thrown when attempted to use LLDB to
+development in a container. The jjgp/llvm-development Git repository has a &lt;code class=&quot;language-text&quot;&gt;devcontainer.json&lt;/code&gt; that points to the
+aforementioned dockerhub image, adds a couple useful VS Code extensions, as well as an additional &lt;code class=&quot;language-text&quot;&gt;runArgs&lt;/code&gt;. The
+&lt;code class=&quot;language-text&quot;&gt;runArgs&lt;/code&gt; allows for the use of LLDB. Without it, there will be an error thrown when attempting to use LLDB to
 debug a process such as LLVM’s &lt;code class=&quot;language-text&quot;&gt;opt&lt;/code&gt; command.&lt;/p&gt;
 &lt;p&gt;To run the sample pass in the Git repository simple do the following:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;mkdir build
@@ -20,8 +21,8 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Debug ..
 make&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Note that passing the &lt;code class=&quot;language-text&quot;&gt;-DCMAKE_BUILD_TYPE=Debug&lt;/code&gt; option retains the build symbols for debugging with GDB or LLDB.
-The above builds the SamplePass shared object that can be loaded for a LLVM pass with the &lt;code class=&quot;language-text&quot;&gt;opt&lt;/code&gt; command. See the
-Makefile for an example of how to run the SamplePass.&lt;/p&gt;
+The above builds the SamplePass shared object that can be loaded as an LLVM pass with the &lt;code class=&quot;language-text&quot;&gt;opt&lt;/code&gt; command. See the
+Makefile in the root of the Git repository for an example of how to run the SamplePass.&lt;/p&gt;
 &lt;p&gt;To debug the pass do the following from the root of the Git repository:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;clang -emit-llvm -S -fno-discard-value-names -c -o samples/hello_world.ll samples/hello_world.c
 gdb opt
