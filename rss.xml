@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[JJGP]]></title><description><![CDATA[Posts by Jason Prasad]]></description><link>https://jjgp.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Jun 2020 01:31:57 GMT</lastBuildDate><item><title><![CDATA[Setting up a development environment for LLVM]]></title><description><![CDATA[For my course in software analysis I found the need to assemble a
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[JJGP]]></title><description><![CDATA[Posts by Jason Prasad]]></description><link>https://jjgp.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Jun 2020 03:07:34 GMT</lastBuildDate><item><title><![CDATA[Setting up a development environment for LLVM]]></title><description><![CDATA[For my course in software analysis I found the need to assemble a
 development environment to streamline my work with LLVM. The setup can be…]]></description><link>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</link><guid isPermaLink="false">https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</guid><pubDate>Sun, 24 May 2020 15:38:44 GMT</pubDate><content:encoded>&lt;p&gt;For my course in &lt;a href=&quot;http://omscs.gatech.edu/cs-6340-software-analysis&quot;&gt;software analysis&lt;/a&gt; I found the need to assemble a
 development environment to streamline my work with LLVM. The setup can be found on GitHub at
 &lt;a href=&quot;https://github.com/jjgp/llvm-development&quot;&gt;jjgp/llvm-development&lt;/a&gt;.&lt;/p&gt;
@@ -6,9 +6,9 @@ development environment to streamline my work with LLVM. The setup can be found 
 LLVM pass.&lt;/p&gt;
 &lt;p&gt;The Dockerfile builds and Ubuntu 18.04 image with Clang, LLDB, and LLVM built with debug assertions enabled. This is
 necessary to enable the use of the &lt;a href=&quot;https://llvm.org/docs/ProgrammersManual.html#the-llvm-debug-macro-and-debug-option&quot;&gt;LLVM_DEBUG&lt;/a&gt; macro. Having been my first time building the LLVM toolchain in a Docker
-image I did use &lt;a href=&quot;https://github.com/pytorch/pytorch/blob/master/.circleci/docker/common/install_llvm.sh&quot;&gt;Pytorch’s&lt;/a&gt; CircleCI Dockerfile as a starting point. The image took over a half our to build on my 2015 MacBook Pro and needed
+image I did use &lt;a href=&quot;https://github.com/pytorch/pytorch/blob/master/.circleci/docker/common/install_llvm.sh&quot;&gt;Pytorch’s&lt;/a&gt; CircleCI Dockerfile as a starting point. The image took over a half an hour to build on my 2015 MacBook Pro and needed
 more memory allotted in the Docker resource settings. Without bumping up the memory, the LLVM build process would run
-out of it and emit a failure. The final image may be found on dockerhub at &lt;a href=&quot;https://hub.docker.com/repository/docker/jjgp/llvm-development&quot;&gt;jjgp/llvm-development&lt;/a&gt;.&lt;/p&gt;
+out of it and emit a failure. The actual built image may be found on dockerhub at &lt;a href=&quot;https://hub.docker.com/repository/docker/jjgp/llvm-development&quot;&gt;jjgp/llvm-development&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The VS Code &lt;a href=&quot;https://code.visualstudio.com/docs/remote/remote-overview&quot;&gt;Remote Development extension&lt;/a&gt; pack allows for
 the development on a container. The jjgp/llvm-development Git repository has a &lt;code class=&quot;language-text&quot;&gt;devcontainer.json&lt;/code&gt; that points to the
 aforementioned dockerhub image, adds a couple useful VS Code extensions, as well as an additional &lt;code class=&quot;language-text&quot;&gt;runArgs&lt;/code&gt; step. The
@@ -27,7 +27,15 @@ Makefile for an example of how to run the SamplePass.&lt;/p&gt;
 gdb opt
 b SamplePass::runOnModule
 # Make breakpoint pending on future shared library load? (y or [n]) y
-run -load build/SamplePass.so -samplepass -S samples/hello_world.ll -disable-output&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Notes on Molecular Transformer]]></title><description><![CDATA[WIP]]></description><link>https://jjgp.github.io/molecular-transformer/</link><guid isPermaLink="false">https://jjgp.github.io/molecular-transformer/</guid><pubDate>Sun, 24 May 2020 12:32:48 GMT</pubDate><content:encoded>&lt;p&gt;WIP&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Building a PC]]></title><description><![CDATA[Having read a few posts about building a computer for machine and deep learning
+run -load build/SamplePass.so -samplepass -S samples/hello_world.ll -disable-output&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then it should stop at the breakpoint!&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Breakpoint 1, (anonymous namespace)::SamplePass::runOnModule (this=0x555557d68940, M=...) at /workspaces/llvm-development/src/SamplePass.cpp:13
+13          bool modified = false;
+(gdb) n
+14          LLVM_DEBUG(dbgs() &amp;lt;&amp;lt; &amp;quot;I&amp;#39;m here!\n&amp;quot;);
+(gdb) n
+15          return modified;
+(gdb)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Notes on Molecular Transformer]]></title><description><![CDATA[WIP]]></description><link>https://jjgp.github.io/molecular-transformer/</link><guid isPermaLink="false">https://jjgp.github.io/molecular-transformer/</guid><pubDate>Sun, 24 May 2020 12:32:48 GMT</pubDate><content:encoded>&lt;p&gt;WIP&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Building a PC]]></title><description><![CDATA[Having read a few posts about building a computer for machine and deep learning
 I had become inspired to build one of my own. Build and…]]></description><link>https://jjgp.github.io/building-a-pc/</link><guid isPermaLink="false">https://jjgp.github.io/building-a-pc/</guid><pubDate>Thu, 21 Mar 2019 14:40:45 GMT</pubDate><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
