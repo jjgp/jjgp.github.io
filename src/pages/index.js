@@ -30,7 +30,7 @@ class BlogIndex extends React.Component {
                   style={{
                     boxShadow: `none`,
                     color: `#3873A3`,
-                    textDecoration: 'none'
+                    textDecoration: "none",
                   }}
                   to={node.fields.slug}
                 >

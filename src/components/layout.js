@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
 
 class Layout extends React.Component {
-  renderHeader = () =>
+  renderHeader = () => (
     <h1
       style={{
         ...scale(0.75),
@@ -23,6 +23,7 @@ class Layout extends React.Component {
         {this.props.title}
       </Link>
     </h1>
+  )
 
   render() {
     const { children } = this.props
