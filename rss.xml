@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[JJGP]]></title><description><![CDATA[Posts by Jason Prasad]]></description><link>https://jjgp.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Jun 2020 03:11:34 GMT</lastBuildDate><item><title><![CDATA[Setting up a development environment for LLVM]]></title><description><![CDATA[For my course in software analysis I found the need to assemble a
-development environment to streamline my work with LLVM. The setup can be…]]></description><link>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</link><guid isPermaLink="false">https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</guid><pubDate>Sun, 24 May 2020 15:38:44 GMT</pubDate><content:encoded>&lt;p&gt;For my course in &lt;a href=&quot;http://omscs.gatech.edu/cs-6340-software-analysis&quot;&gt;software analysis&lt;/a&gt; I found the need to assemble a
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[JJGP]]></title><description><![CDATA[Posts by Jason Prasad]]></description><link>https://jjgp.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 13 Mar 2021 18:09:32 GMT</lastBuildDate><item><title><![CDATA[Setting up a development environment for LLVM]]></title><description><![CDATA[For my course in software analysis I found the need to assemble a
+development environment to streamline my work with LLVM. The setup can be…]]></description><link>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</link><guid isPermaLink="false">https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</guid><pubDate>Sun, 24 May 2020 15:38:44 GMT</pubDate><content:encoded>&lt;p&gt;For my course in &lt;a href=&quot;https://omscs.gatech.edu/cs-6340-software-analysis&quot;&gt;software analysis&lt;/a&gt; I found the need to assemble a
 development environment to streamline my work with LLVM. The setup can be found on GitHub at
 &lt;a href=&quot;https://github.com/jjgp/llvm-development&quot;&gt;jjgp/llvm-development&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Briefly, it contains a Dockerfile, VS Code Remote-Containers &lt;code class=&quot;language-text&quot;&gt;devcontainer.json&lt;/code&gt;, and the structure for a very simple
@@ -36,43 +36,39 @@ run -load build/SamplePass.so -samplepass -S samples/hello_world.ll -disable-out
 14          LLVM_DEBUG(dbgs() &amp;lt;&amp;lt; &amp;quot;I&amp;#39;m here!\n&amp;quot;);
 (gdb) n
 15          return modified;
-(gdb)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Notes on Molecular Transformer]]></title><description><![CDATA[WIP]]></description><link>https://jjgp.github.io/molecular-transformer/</link><guid isPermaLink="false">https://jjgp.github.io/molecular-transformer/</guid><pubDate>Sun, 24 May 2020 12:32:48 GMT</pubDate><content:encoded>&lt;p&gt;WIP&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Building a PC]]></title><description><![CDATA[Having read a few posts about building a computer for machine and deep learning
-I had become inspired to build one of my own. Build and…]]></description><link>https://jjgp.github.io/building-a-pc/</link><guid isPermaLink="false">https://jjgp.github.io/building-a-pc/</guid><pubDate>Thu, 21 Mar 2019 14:40:45 GMT</pubDate><content:encoded>&lt;p&gt;
-  &lt;a
+(gdb)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Building a PC]]></title><description><![CDATA[Having read a few posts about building a computer for machine and deep learning
+I had become inspired to build one of my own. Build and…]]></description><link>https://jjgp.github.io/building-a-pc/</link><guid isPermaLink="false">https://jjgp.github.io/building-a-pc/</guid><pubDate>Thu, 21 Mar 2019 14:40:45 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/b2dd0849560a0528e6cd861b7584bcdf/bff4e/pc.png&quot;
+    href=&quot;/static/ca857435cac8141b1d97cd8b6c757585/ce04e/pc.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
     &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 93.91891891891892%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAAAsSAAALEgHS3X78AAAEmElEQVQ4yy2U2W5bVRSG/QLQNkkdz/MYz/FsJ/bxcDyd2HHszM6c1B0ELaWtKmYxqBVSe9ciEFIuQAIkJFSEEHeIC14A3oHn+Fg+cPFrnb3P3muv9a/1L8PXn7/Pzt4+R+Mu6z2Vrlql323o0FoK3WaVdfneHWlMtvrsjzX2xj1OJ2O21ru8NT3kp8vnPH33TSYbbQw7Wo1YKk2j1aKwUmG5UBSUSOYKJLJ5YuksS8lllhIpImLjsk5kckSX04QTSUGKs5MJ96YTxpqCIb0cR+100TZGdNb6qF2NZrdHvd2h3upQU9sozZbYllhV32vIeR3tme2htLrUVZVWvYSht6ZxfHGLo/MbgimHZzc4OLtgcnrO/skZk5NzHftHp+wfC45O/rOCifw/krPHcvd0epuLm7cwFEt51iS6WQRqb4322rrYPr3hiLXRFt31kUSs0dIGdAdDtOEsk9n3OgO5NxyN2d7d40CcH59fYKhVi6xUFRwuJ3anA5fHQ28wIrgUxRsIYTRbsTrdOhweHx7Zc/tDVOtN6s06uXyWRrPJoWS0sTnGoKxkKVcqFAo5/Wc4skRTog2Fg0QTCTob2/KYG6PJhMVm5ercNVrC24GkrNQVCsU8VUVhZ3KI2lalKKkw2UKe0daY8+mUwfoGHUm9otSoNlp0RzvYXS5xuMii2cTrV68w3Nxic3dfHNYolktyVmFje5dyuYBhKejUo9o72Ofh48ec3rjFnXsPOL/1Br3+EJfbhVNgsVoxW0yYxHGt0WC0ucnKaplMNs2qUhWahmQyCQzhgB2vzyPkD+gMBmTLFTb2TxkfXNBe3yaZX8EXjujc2d0eLA4HgaUIqWwWfziELxSktLoqLdQhlQxjiIdd+ANeoqkUHrnoj6coqX0KzT7ZWk+3oeUCZimKxeXF6vZi9wYwWm1YXR5cfj+5ohRW0k4ng1KUYpRg0IM3GNQdFmptav0xZVVD0YZkq00yVZVcrUMolRVnfhYskr7DiUuint3LFAos5zLk0xKhVhcJBd34AgHsHq/uNChR5ip11MEGUZGfLyayy+RxSrtct9hYMFvEWnH4/EJFQJyJFOMRVvIRDNu9EtGQC7fPi8XpwmR36LAGfTgLcbzxGPOLZox2G+5kDJNUfH7RxLzJzKLNjsvrIZnJEIkEUFelKOdbDUrpIOGloPDk0g/ZpIEP7t7nzkefkK81eG1ujqxS57PLH9i+eZe5xcX/HdpwetzEllMkoj76zQyGu4caO70yhVxKiLZjlFS8opLnl9/zza9/kKs2uDK/QDRf4Pazp+w+vK8/es1oZEGa3SoKywh/W9oKe2syHJ49OuHJ24cy8xTm5FWj9JtbiI7ImFrtrBFKprh23YhZUo0IV75YTE/56sKCODSKJJ3Ua2Wev3fOozMNwy9ffMDv3z7lwXSH1xeuSxV9EmEEuxBu9wdwCJyBIDbZn1V4Vgh9LZqfKcdst8vw7fDb5ad8+fEUw9+vXvDPn9/x48sPUWWetRortJoV1MYqSqVIsZgmn0vqKkin48QTERLJqCAmeg+wFAnx1ZMH/PXzS169eId/AZ7TjczPXXoFAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 93.67088607594937%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQBAwX/xAAWAQEBAQAAAAAAAAAAAAAAAAABAgD/2gAMAwEAAhADEAAAAYMzlipzS1xmfSE1/8QAGxAAAgMAAwAAAAAAAAAAAAAAAAECERIDEzH/2gAIAQEAAQUCE0WRu/BKznguzKFFZ//EABURAQEAAAAAAAAAAAAAAAAAABAB/9oACAEDAQE/ASn/xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAgEBPwEh/8QAGxAAAgEFAAAAAAAAAAAAAAAAABBBAhESMXH/2gAIAQEABj8CklYl1pU8P//EABsQAQADAAMBAAAAAAAAAAAAAAEAESExQWFR/9oACAEBAAE/IbvUXt8xCnT2PG1iz2+REBwclW4FJTCPxgMOk//aAAwDAQACAAMAAAAQtDe9/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEhEP/aAAgBAwEBPxAolz//xAAWEQEBAQAAAAAAAAAAAAAAAAABACH/2gAIAQIBAT8QlJZN/8QAHRABAAICAgMAAAAAAAAAAAAAAQARITFBUWFxkf/aAAgBAQABPxBMGAtCjN6Q8lqG22YNSmh1thUK2wnEW0eD5LIDiUlJNPbAoIS//9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
         alt=&quot;pc&quot;
-        title=&quot;&quot;
-        src=&quot;/static/b2dd0849560a0528e6cd861b7584bcdf/fcda8/pc.png&quot;
-        srcset=&quot;/static/b2dd0849560a0528e6cd861b7584bcdf/12f09/pc.png 148w,
-/static/b2dd0849560a0528e6cd861b7584bcdf/e4a3f/pc.png 295w,
-/static/b2dd0849560a0528e6cd861b7584bcdf/fcda8/pc.png 590w,
-/static/b2dd0849560a0528e6cd861b7584bcdf/efc66/pc.png 885w,
-/static/b2dd0849560a0528e6cd861b7584bcdf/c83ae/pc.png 1180w,
-/static/b2dd0849560a0528e6cd861b7584bcdf/bff4e/pc.png 2660w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        title=&quot;pc&quot;
+        src=&quot;/static/ca857435cac8141b1d97cd8b6c757585/828fb/pc.jpg&quot;
+        srcset=&quot;/static/ca857435cac8141b1d97cd8b6c757585/ff44c/pc.jpg 158w,
+/static/ca857435cac8141b1d97cd8b6c757585/a6688/pc.jpg 315w,
+/static/ca857435cac8141b1d97cd8b6c757585/828fb/pc.jpg 630w,
+/static/ca857435cac8141b1d97cd8b6c757585/0ede0/pc.jpg 945w,
+/static/ca857435cac8141b1d97cd8b6c757585/3ac88/pc.jpg 1260w,
+/static/ca857435cac8141b1d97cd8b6c757585/ce04e/pc.jpg 2660w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
       /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
   &lt;/a&gt;
-    &lt;/p&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Having read a few posts about building a computer for machine and deep learning
 I had become inspired to build one of my own.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -158,42 +154,38 @@ The most straightforward way to go about it is outlined at the following:
 In short, it’s to download the deb (network) CUDA Toolkit and follow the steps
 there. I had tried deb (local) and it just lead to unmet dependency issues.&lt;/p&gt;
 &lt;h2&gt;Remote Access&lt;/h2&gt;
-&lt;p&gt;
-  &lt;a
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/30cb25d3d714537c337d401fa9b9cfb1/493ac/pi.png&quot;
+    href=&quot;/static/e0a631bc525233828e2268dacfdc64f0/d2602/pi.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
     &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD9UlEQVQ4y02RW0zbZRiH/9dqcBTKoaUUSjnTQlmB0gOwUUAGFBiTo7DBoAwGjJNDBoPBwDHYxjiM00hwizgkE+JGFo3zEDdiorjFOBNxYbuYURNNTFATL4yPHyUaL57ku/me9/d7X+nRgw/o73BSlmOlvfog7TUFOIszqDyUSkV+CmWOJEqyLTiL7DQffonWI1l0Hz9ET8PLdNXm0vJKGs2l+2ku2Yczz4S09fQpC9Mj1BbamRxoYfb8q4z2N3Gus5b+tkq6Gktorcqjp7GYoZPljLxWydRAPXPnmrhyxslwe4mgmBFBb60D6cmTLd5dmqfvRCn3b1/jm/VbfHLnOqvXL3Nj5ixTQ630tx7mbFs5w52VXOyqZqzXycSZWka7jzIshoz31DDZW8P59jKkxZVVJqfGWbjYyR8/P+b37R95840JNu6t8uWnK7x/c5rVhRGWZwd4e6aXpekeV7rLp6u5IAaMC/lbE128M9vP4lgnUqEjhdCIcIrrmvj1l+95sPEFm4824O9t/vrzJ354vM7d1TkhHebm1T4xuJ3xvmMu6aXuKi6dPiqG9fHe4igfLU8gDYo9NVQVUllfx/z9DT7+dpNn27/xcHOLO7duMH9lkIoSB+VFBzhW4WCkt4mv7q3w7Ou7PPxwkftr82x+vsZ3n91mc30FaXl6kLWlOZqOOxkam6Dv2nWOj81Qe2EWW2Y2ccmp6OMTiDGZCY2OwRhv5NTJRl7v66CjxUlrwxE62+roOFFNW30FUm9bDac620jPcWCyJpEQb8JsMmFMtJFgP4AtK5/4/RnEWFLQ6gzIfXyRydxxl+3B7cXncXN7Dvc9L+Ahc8Nb7o6UV1TMwbJy8opLScvJxZqWSUJKGnutqRjMNgyJViJi49BG6VFpQ1AFBhKoCUStVuGn8kUlUKuVLgIDlEj55UcoddZRUFFFVmEp6XkFpGbnkZyZhTU9E4s9A6NIrjPGE6aPRhseRoBWg9JfhY/CB1+Bwk+Jf4A/miANUrojl4zcfOw76VLTiLclu4hNtBAtdqczGgmPjiYoLBy1VotfgBpflRJvIZJ7y/GUe7jYeXv7eiMl2dNIsqcLmZ3ElH2YkpKJs1qJEbJIg4GQqEghCxWpglAJmULlh49S4fq8I5F7ef4n3UFKsInl25JcEqPZQpzFyl6zGb1IFqbTERwRgSY0FLWo46f2x9dP4Urn9X+hCw/XW9IZYtDHGtCJNBF6PWFRUYRGRgpROJqQYNTiACqxH4Wo6aPcEXntVhWfPTxlyDx2Ly4TeIi3ZLPbsYna1h1E7X8xi/pxFouoHkeUGBimi0IrqgcGB+GvCRBpVeIYCtdhvHx2h8i9PfkH1ltbVmjy3uEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.31645569620254%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAAFk8SC1jHB//8QAGRABAAMBAQAAAAAAAAAAAAAAAQADERAS/9oACAEBAAEFAhrZ7r3aYsef/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8Bqv/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/AYj/xAAbEAACAQUAAAAAAAAAAAAAAAABEQATIDEycf/aAAgBAQAGPwI1EC5ldm4s/8QAGBAAAwEBAAAAAAAAAAAAAAAAAAERITH/2gAIAQEAAT8hTPRrNFUkanQaxyn/2gAMAwEAAgADAAAAEHAv/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/EJTT/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAECAQE/ELDL/8QAGhABAQEBAAMAAAAAAAAAAAAAAREAIUGR0f/aAAgBAQABPxBYlCF0Tk0LgVEwfWkGudg/MR2ZF8ajf//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
         alt=&quot;pi&quot;
-        title=&quot;&quot;
-        src=&quot;/static/30cb25d3d714537c337d401fa9b9cfb1/fcda8/pi.png&quot;
-        srcset=&quot;/static/30cb25d3d714537c337d401fa9b9cfb1/12f09/pi.png 148w,
-/static/30cb25d3d714537c337d401fa9b9cfb1/e4a3f/pi.png 295w,
-/static/30cb25d3d714537c337d401fa9b9cfb1/fcda8/pi.png 590w,
-/static/30cb25d3d714537c337d401fa9b9cfb1/efc66/pi.png 885w,
-/static/30cb25d3d714537c337d401fa9b9cfb1/c83ae/pi.png 1180w,
-/static/30cb25d3d714537c337d401fa9b9cfb1/493ac/pi.png 4032w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        title=&quot;pi&quot;
+        src=&quot;/static/e0a631bc525233828e2268dacfdc64f0/828fb/pi.jpg&quot;
+        srcset=&quot;/static/e0a631bc525233828e2268dacfdc64f0/ff44c/pi.jpg 158w,
+/static/e0a631bc525233828e2268dacfdc64f0/a6688/pi.jpg 315w,
+/static/e0a631bc525233828e2268dacfdc64f0/828fb/pi.jpg 630w,
+/static/e0a631bc525233828e2268dacfdc64f0/0ede0/pi.jpg 945w,
+/static/e0a631bc525233828e2268dacfdc64f0/3ac88/pi.jpg 1260w,
+/static/e0a631bc525233828e2268dacfdc64f0/d2602/pi.jpg 4032w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
       /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
   &lt;/a&gt;
-    &lt;/p&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Most of my use of the PC will be remotely. To facilitate that I set up the
 following: &lt;a href=&quot;https://help.ubuntu.com/community/WakeOnLan&quot;&gt;WakeOnLan&lt;/a&gt;,
 &lt;a href=&quot;https://help.ubuntu.com/lts/serverguide/openssh-server.html.en&quot;&gt;OpenSSH&lt;/a&gt;,
