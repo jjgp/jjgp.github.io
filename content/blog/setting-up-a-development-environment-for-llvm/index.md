@@ -4,7 +4,7 @@ date: "2020-05-24T15:38:44Z"
 description: Lessons learned from writing an LLVM pass 
 ---
 
-For my course in [software analysis](http://omscs.gatech.edu/cs-6340-software-analysis) I found the need to assemble a
+For my course in [software analysis](https://omscs.gatech.edu/cs-6340-software-analysis) I found the need to assemble a
 development environment to streamline my work with LLVM. The setup can be found on GitHub at
 [jjgp/llvm-development](https://github.com/jjgp/llvm-development).
 
