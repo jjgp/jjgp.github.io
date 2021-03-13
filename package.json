@@ -8,55 +8,50 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "gatsby": "^2.2.3",
-    "gatsby-image": "^2.0.34",
-    "gatsby-plugin-feed": "^2.0.15",
-    "gatsby-plugin-google-analytics": "^2.0.17",
-    "gatsby-plugin-manifest": "^2.0.24",
-    "gatsby-plugin-offline": "^2.0.25",
-    "gatsby-plugin-react-helmet": "^3.0.10",
-    "gatsby-plugin-sharp": "^2.0.30",
-    "gatsby-plugin-typography": "^2.2.10",
-    "gatsby-remark-copy-linked-files": "^2.0.11",
-    "gatsby-remark-images": "^2.0.6",
-    "gatsby-remark-prismjs": "^3.2.6",
-    "gatsby-remark-responsive-iframe": "^2.1.1",
-    "gatsby-remark-smartypants": "^2.0.9",
-    "gatsby-source-filesystem": "^2.0.27",
-    "gatsby-transformer-remark": "^2.3.7",
-    "gatsby-transformer-sharp": "^2.1.17",
-    "node-fetch": "^2.6.1",
+    "gatsby": "^3.0.1",
+    "gatsby-plugin-feed": "^3.0.0",
+    "gatsby-plugin-gatsby-cloud": "^2.0.0",
+    "gatsby-plugin-image": "^1.0.0",
+    "gatsby-plugin-manifest": "^3.0.0",
+    "gatsby-plugin-react-helmet": "^4.0.0",
+    "gatsby-plugin-sharp": "^3.0.0",
+    "gatsby-remark-copy-linked-files": "^3.0.0",
+    "gatsby-remark-images": "^4.0.0",
+    "gatsby-remark-prismjs": "^4.0.0",
+    "gatsby-remark-responsive-iframe": "^3.0.0",
+    "gatsby-remark-smartypants": "^3.0.0",
+    "gatsby-source-filesystem": "^3.0.0",
+    "gatsby-transformer-remark": "^3.0.0",
+    "gatsby-transformer-sharp": "^3.0.0",
+    "gh-pages": "^3.1.0",
     "prismjs": "^1.23.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-helmet": "^5.2.0",
-    "react-typography": "^0.16.19",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
     "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.54",
-    "typography": "^0.16.19",
-    "typography-theme-wordpress-2016": "^0.16.19"
+    "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1",
-    "prettier": "^1.16.4"
+    "prettier": "2.2.1"
   },
   "homepage": "https://jjgp.github.io",
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
+  "license": "0BSD",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jjgp/jjgp.github.io.git"
+    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
     "build": "gatsby build",
     "deploy": "gatsby build && gh-pages -d public -b master",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
 }

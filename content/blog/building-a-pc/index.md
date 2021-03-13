@@ -4,7 +4,7 @@ date: "2019-03-21T14:40:45Z"
 description: Building a PC for machine and continued learning
 ---
 
-![pc](./pc.png)
+![pc](./pc.jpg)
 
 Having read a few posts about building a computer for machine and deep learning
 I had become inspired to build one of my own.
@@ -103,7 +103,7 @@ there. I had tried deb (local) and it just lead to unmet dependency issues.
 
 ## Remote Access
 
-![pi](./pi.png)
+![pi](./pi.jpg)
 
 Most of my use of the PC will be remotely. To facilitate that I set up the
 following: [WakeOnLan](https://help.ubuntu.com/community/WakeOnLan), 
