@@ -1,5 +1,5 @@
 ---
-title: A ML Dev Setup with ngrok and Colab
+title: A ML dev setup with ngrok and Colab
 date: "2022-03-30T00:00:00Z"
 ---
 
