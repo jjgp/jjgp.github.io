@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jason Prasad</title><link>https://jjgp.github.io/</link><description>Recent content on Jason Prasad</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 30 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jjgp.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>A ML Dev Setup with ngrok and Colab</title><link>https://jjgp.github.io/a-ml-dev-setup-with-ngrok-and-colab/</link><pubDate>Wed, 30 Mar 2022 00:00:00 +0000</pubDate><guid>https://jjgp.github.io/a-ml-dev-setup-with-ngrok-and-colab/</guid><description>&lt;p>As a user of a mac with a M1 chip, I often have to run into the obstacle of
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jason Prasad</title><link>https://jjgp.github.io/</link><description>Recent content on Jason Prasad</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 30 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jjgp.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>A ML Dev Setup with ngrok and Colab</title><link>https://jjgp.github.io/a-ml-dev-setup-with-ngrok-and-colab/</link><pubDate>Wed, 30 Mar 2022 00:00:00 +0000</pubDate><guid>https://jjgp.github.io/a-ml-dev-setup-with-ngrok-and-colab/</guid><description>&lt;p>As a user of a mac with a M1 chip, I often run into the obstacle of
 dependencies without support for the arm64 architecture. It leads to
 building the dependency locally, using a container or virtual machine, a
-remote instance, or finding an another dependency with similar features. For
+remote instance, or finding another dependency with similar features. For
 this reason, I was drawn to the many examples of connecting through SSH to
 a Colab instance: &lt;a href="https://github.com/abhishekkrthakur/colabcode">ColabCode&lt;/a>,
 &lt;a href="https://github.com/WassimBenzarti/colab-ssh">colab-ssh&lt;/a>, &lt;a href="https://github.com/shawwn/colab-tricks">colab-tricks&lt;/a>.
@@ -77,7 +77,7 @@ root 1099 0.0 0.0 20184 3828 pts/0 Ss 21:29 0:00 -bash
 root 1112 0.0 0.0 36080 3268 pts/0 R+ 21:29 0:00 ps -aux
 &lt;/code>&lt;/pre>&lt;p>So the instance is certainly a container and the initial process is kicked off by some &lt;code>/datalab/run.sh&lt;/code> that
 starts a node &lt;code>/datalab/web/app.js&lt;/code> process. There is a Jupyter/IPython notebook process, dap_multiplexer (which
-stands for &amp;ldquo;Debug Adapter Protocol&amp;rdquo; as found in the &lt;code>/datalab/web&lt;/code> files), a &lt;code>colab-fileshim.py&lt;/code> Python process (I think used for the Colab file browser?), a &lt;a href="https://github.com/microsoft/pyright">pyright&lt;/a> language server, a &lt;a href="https://github.com/microsoft/debugpy">debugpy&lt;/a> process, a &lt;code>tmux&lt;/code> session (hmmmm), and among others&amp;hellip; I saw all these processes
+stands for &amp;ldquo;Debug Adapter Protocol&amp;rdquo; as found in the &lt;code>/datalab/web&lt;/code> files), a &lt;code>colab-fileshim.py&lt;/code> Python process (I think is used for the Colab file browser?), a &lt;a href="https://github.com/microsoft/pyright">pyright&lt;/a> language server, a &lt;a href="https://github.com/microsoft/debugpy">debugpy&lt;/a> process, a &lt;code>tmux&lt;/code> session (hello again), and among others&amp;hellip; I saw all these processes
 and thought about what I could debug. The &lt;code>/datalab/web/app.js&lt;/code> seemed like a good place to start.&lt;/p>
 &lt;h2 id="debugging-the-datalab-proxy-server">Debugging the datalab proxy server&lt;/h2>
 &lt;p>In perusing the &lt;code>/datalab/&lt;/code> folder on the Colab instance it became clear that it was a server that proxied the
@@ -113,12 +113,12 @@ environment variables were most likely present from the actual &lt;code>docker r
 could be why a new shell would not have the variables whereas a psuedoterminal spawned from
 the initial process might.&lt;/p>
 &lt;h2 id="deciding-on-the-approach">Deciding on the approach&lt;/h2>
-&lt;p>After witnessing how the &lt;code>tmux&lt;/code> session was started in the Colab terminal I decided to mimic it as closely as
+&lt;p>After witnessing how the &lt;code>tmux&lt;/code> session was started for the Colab terminal I decided to mimic it as closely as
 possibly in my &lt;a href="https://github.com/jjgp/colab/blob/main/notebooks/ngrok.ipynb">ngrok.ipynb&lt;/a>. To do so I read the
 source for how &lt;a href="https://github.com/microsoft/node-pty">node-pty&lt;/a> passed the &lt;code>env&lt;/code> property: &lt;a href="https://github.com/microsoft/node-pty/blob/1674722e1caf3ff4dd52438b70ed68d46af83a6d/src/unixTerminal.ts#L282">src/unixTerminal.ts#L282&lt;/a>
 and &lt;a href="https://github.com/microsoft/node-pty/blob/1674722e1caf3ff4dd52438b70ed68d46af83a6d/src/terminal.ts#L197">src/terminal.ts#L197&lt;/a>.
 Long story short, I took a rather circuitous path to simply hardcode and pass some environment variables. Anyways, I can now
-confidently remote SSH into a Colab instance and even use my favorite VS Code setup.&lt;/p></description></item><item><title>Setting up a development environment for LLVM</title><link>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</link><pubDate>Sun, 24 May 2020 15:38:44 +0000</pubDate><guid>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</guid><description>&lt;p>For my course in &lt;a href="https://omscs.gatech.edu/cs-6340-software-analysis">software analysis&lt;/a> I found the need to assemble a
+confidently SSH into a Colab instance and even use my favorite VS Code setup.&lt;/p></description></item><item><title>Setting up a development environment for LLVM</title><link>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</link><pubDate>Sun, 24 May 2020 15:38:44 +0000</pubDate><guid>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</guid><description>&lt;p>For my course in &lt;a href="https://omscs.gatech.edu/cs-6340-software-analysis">software analysis&lt;/a> I found the need to assemble a
 development environment to streamline my work with LLVM. The setup can be found on GitHub at
 &lt;a href="https://github.com/jjgp/llvm-development">jjgp/llvm-development&lt;/a>.&lt;/p>
 &lt;p>Briefly, it contains a Dockerfile, VS Code Remote-Containers &lt;code>devcontainer.json&lt;/code>, and the structure for a very simple
