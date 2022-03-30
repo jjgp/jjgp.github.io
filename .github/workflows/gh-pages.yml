@@ -1,10 +1,10 @@
-name: deploy
+name: gh-pages
 on:
   push:
     branches:
       - hugo
 jobs:
-  deploy:
+  gh-pages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,10 +14,10 @@ jobs:
       - name: setup hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'
+          hugo-version: latest
       - name: build
         run: hugo --minify
-      - name: deploy
+      - name: gh-pages
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/hugo'
         with:
