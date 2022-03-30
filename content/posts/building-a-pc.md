@@ -39,7 +39,7 @@ part list) and its compatibility check was perhaps the most informative
 resource. My process wasn't very scientific and I even splurged on the CPU. I
 did make sure to pick a motherboard, CPU, and PSU could support more GPUs or
 other PCIe devices in the future. In researching which GPU to use I defaulted
-to the judgment outlined in the following: [Which GPU(s) to Get for Deep Learning: ...](http://timdettmers.com/2018/11/05/which-gpu-for-deep-learning/)
+to the judgment outlined in the following: [Which GPU(s) to Get for Deep Learning: ...](https://timdettmers.com/2020/09/07/which-gpu-for-deep-learning/)
 
 A few things needed for setup include: a grounding cable, thermal paste,
 isopropyl alcohol, and a magnetic screw set. The grounding cable is worn at all
