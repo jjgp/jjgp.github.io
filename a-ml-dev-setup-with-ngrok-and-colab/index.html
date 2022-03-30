@@ -1,0 +1,88 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Your siate description"><link rel="shortcut icon" href=https://jjgp.github.io/favicon.ico><link rel=stylesheet href=/css/style.min.css><title>A ML Dev Setup with ngrok and Colab</title></head><body><header id=banner><h2><a href=https://jjgp.github.io/>Jason Prasad</a></h2><nav><ul></ul></nav></header><main id=content><article><header id=post-header><h1>A ML Dev Setup with ngrok and Colab</h1><div><time>March 30, 2022</time></div></header><p>As a user of a mac with a M1 chip, I often have to run into the obstacle of
+dependencies without support for the arm64 architecture. It leads to
+building the dependency locally, using a container or virtual machine, a
+remote instance, or finding an another dependency with similar features. For
+this reason, I was drawn to the many examples of connecting through SSH to
+a Colab instance: <a href=https://github.com/abhishekkrthakur/colabcode>ColabCode</a>,
+<a href=https://github.com/WassimBenzarti/colab-ssh>colab-ssh</a>, <a href=https://github.com/shawwn/colab-tricks>colab-tricks</a>.
+As an exercise in understanding the previous approaches I decided to implement
+a solution myself. The full process has been accumated into <a href=https://github.com/jjgp/colab/blob/main/notebooks/ngrok.ipynb>ngrok.ipynb</a>.</p><h2 id=a-brief-explanation-of-the-process>A brief explanation of the process</h2><p>Essentially to connect to a Colab instance the browser interface must be used
+to configure SSH and a tunneling tool such as <a href=https://ngrok.com/>ngrok</a>
+(or Cloudflare Tunnel). I implemented the SSH server with an authorized key and
+used <code>ngrok</code> to create the TCP tunnel. Afterwards I was able to SSH into the
+instance. There was one caveat: when I ran <code>nvidia-smi</code> I was greeted by the
+following error:</p><blockquote><p>Failed to initialize NVML: Driver/library version mismatch</p></blockquote><h2 id=in-search-of-environment-variables>In search of environment variables</h2><p>It turns out that in my SSH session was missing environment variables that were
+present in Colab&rsquo;s IPython shell that allows <code>nvidia-smi</code> to function properly.
+For example, opening up the terminal in the browser interface or using a cell
+to run <code>env</code> would clarify the missing variables. In fact, when cross-referencing
+with how <a href=https://github.com/WassimBenzarti/colab-ssh>colab-ssh</a> is implemented
+it&rsquo;s noticable that some environment file writing is happening behind the scenes
+(<a href=https://github.com/WassimBenzarti/colab-ssh/blob/0e495da074a9ded37e09e50b26a15b39eb8a4fb0/colab_ssh/launch_ssh.py#L55>colab_ssh/launch_ssh.py#L55</a>). Even so, I wanted to know why the environment variables
+were missing in SSH or populated in the Colab processes. Even more, I didn&rsquo;t want to rely
+on a hardcoded list that may change in the future versions of Colab, CUDA, TensorFlow,
+or NVIDIA (although I still sort of arrived at a hardcoded list).</p><p>At first I SSH&rsquo;ed into the Colab instance and thought to check all the profile/rc files:
+/etc/profile, /etc/bash.bashrc, ~/.bashrc, ~/.bash_profile. I vaguely knew some of these
+files were sourced or not sourced in SSH sessions, interactive, non-interactive, login,
+yada yada, and XYZ shells. That being said I&rsquo;m not exactly privy to all the details and
+it turns out all the files on the instance were pretty vanilla. Therefore, there was
+some other reason my SSH shell missed what Colab shells had.</p><h2 id=inspecting-the-web-client>Inspecting the web client</h2><p>I thought I could get a hint by inspecting the browser interface to figure out how it
+interacted with the Colab instance. Perhaps opening the Colab terminal would
+communicate with the instance in someway that would narrow my search. The source code
+is of coursed minified and obfuscated and the HTML wasn&rsquo;t giving me much. I caught
+that the terminal is actually a <code>tmux</code> session and fun to close out with <em>Ctrl+b</em>, <em>Ctrl+x</em>,
+and <em>y</em>.</p><p>Inspecting the network when I open and closed the Colab terminal there was a polling request
+to a URL like:</p><blockquote><p><a href="https://colab.research.google.com/tun/m/gpu-t4-s-1xvtxpiyecc2j/tty/?authuser=XXXXXXX&transport=polling&t=XXXXXXX&sid=XXXXXXXXXXXXXXXXXXXX">https://colab.research.google.com/tun/m/gpu-t4-s-1xvtxpiyecc2j/tty/?authuser=XXXXXXX&transport=polling&t=XXXXXXX&sid=XXXXXXXXXXXXXXXXXXXX</a></p></blockquote><p>&mldr;and it returns a response that represents the state of the terminal:</p><pre tabindex=0><code>117:42[&#34;data&#34;,{&#34;data&#34;:&#34;\u001b[m\u001b[?1003l\u001b[?1006l\u001b[?2004l\u001b[1;1H\u001b[1;13r\u001b[1;11H&#34;,&#34;pause&#34;:true}]320:42[&#34;data&#34;,{&#34;data&#34;:&#34;\u001b[H\u001b[34m\u001b[1m/content\u001b[m#\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[K\r\n\u001b[37m\u001b[40m[0] 0:bash*              \&#34;d325abb1682b\&#34; 21:17 30-Mar-22\u001b[m\u001b[1;11H&#34;,&#34;pause&#34;:true}]88:42[&#34;data&#34;,{&#34;data&#34;:&#34;\u001b[H\u001b[K\u001b[34m\u001b[1m/content\u001b[m# &#34;,&#34;pause&#34;:true}]
+</code></pre><p>A lot of that unicode simply paints the following:</p><p><img src=https://user-images.githubusercontent.com/3421544/160933923-58ab1cf2-ef91-4d16-84ad-2b120a6dbdd1.png alt="Colab terminal"></p><p>I did notice that the request contained a <code>/tty/</code> in the path which stands for terminal. It also has
+<code>gpu-t4-s-1xvtxpiyecc2j</code> which could somehow represent that I was using a specific GPU instance. Otherwise,
+there wasn&rsquo;t much more to go on.</p><h2 id=what-exactly-is-running-on-the-colab-instance>What exactly is running on the Colab instance</h2><p>Returning to the actual Colab instance I was SSH&rsquo;ed into, I would often run <code>top</code> or <code>ps -aux</code> to see
+what was running.</p><pre tabindex=0><code>USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    992     4 ?        Ss   20:44   0:00 /sbin/docker-init -- /datalab/run.sh
+root           8  0.0  0.4 367988 54120 ?        Sl   20:44   0:01 /tools/node/bin/node /datalab/web/app.js
+root          24  0.0  0.0  35892  4904 ?        Ss   20:44   0:00 tail -n +0 -F /root/.config/Google/DriveFS/Logs/dpb.txt /root/.config/Google/DriveFS/Logs/drive_fs.txt
+root          36  0.1  0.0      0     0 ?        Z    20:44   0:05 [python3] &lt;defunct&gt;
+root          37  0.0  0.3 160404 40916 ?        S    20:44   0:00 python3 /usr/local/bin/colab-fileshim.py
+root          62  0.0  0.4 203824 60388 ?        Sl   20:44   0:02 /usr/bin/python3 /usr/local/bin/jupyter-notebook --ip=&#34;172.28.0.2&#34; --port=9000 --FileContentsManager.root_dir=&#34;/&#34; --MappingKernelManager.
+root          63  0.0  0.0 708228 10612 ?        Sl   20:44   0:02 /usr/local/bin/dap_multiplexer --domain_socket_path=/tmp/debugger_14ltpm10wj
+root          80  0.3  0.7 470736 93636 ?        Ssl  20:52   0:07 /usr/bin/python3 -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-cc5cc01e-40d9-48b5-8f7a-10571608b891.json
+root         100  0.2  0.1 128408 16144 ?        Sl   20:52   0:05 /usr/bin/python3 /usr/local/lib/python3.7/dist-packages/debugpy/adapter --for-server 46787 --host 127.0.0.1 --port 23387 --server-access-
+root         117  0.1  0.7 524628 103172 ?       Sl   20:52   0:04 node /datalab/web/pyright/pyright-langserver.js --stdio --cancellationReceive=file:cc9b716bb043ca4f062688d92cefdb3df8feac12f9
+root         704  0.0  0.0  72304  4076 ?        Ss   20:52   0:00 /usr/sbin/sshd
+root         753  0.0  0.0  39200  6376 ?        S    20:53   0:00 bash
+root         755  0.2  0.1 726652 24192 ?        Sl   20:53   0:04 ngrok tcp 22 --log ngrok.log --log-format logfmt
+root         831  0.0  0.0  55756  5856 ?        Ss   20:56   0:00 tmux new-session -A -D -s 0
+root         832  0.0  0.0  47656  7200 pts/2    Ss+  20:56   0:00 -bash
+root        1088  0.1  0.0 101560  7068 ?        Rs   21:29   0:00 sshd: root@pts/0
+root        1099  0.0  0.0  20184  3828 pts/0    Ss   21:29   0:00 -bash
+root        1112  0.0  0.0  36080  3268 pts/0    R+   21:29   0:00 ps -aux
+</code></pre><p>So the instance is certainly a container and the initial process is kicked off by some <code>/datalab/run.sh</code> that
+starts a node <code>/datalab/web/app.js</code> process. There is a Jupyter/IPython notebook process, dap_multiplexer (which
+stands for &ldquo;Debug Adapter Protocol&rdquo; as found in the <code>/datalab/web</code> files), a <code>colab-fileshim.py</code> Python process (I think used for the Colab file browser?), a <a href=https://github.com/microsoft/pyright>pyright</a> language server, a <a href=https://github.com/microsoft/debugpy>debugpy</a> process, a <code>tmux</code> session (hmmmm), and among others&mldr; I saw all these processes
+and thought about what I could debug. The <code>/datalab/web/app.js</code> seemed like a good place to start.</p><h2 id=debugging-the-datalab-proxy-server>Debugging the datalab proxy server</h2><p>In perusing the <code>/datalab/</code> folder on the Colab instance it became clear that it was a server that proxied the
+Jupyter notebook server and setup a few sockets and the other processes. One of those sockets was found in the source
+<code>/datalab/web/socketio_to_pty.js</code> file. The file implemented a <a href=https://socket.io/>socketio</a> websocket and a <a href=https://github.com/microsoft/node-pty>node-pty</a> pseudoterminal. Also in the source was the setup of a <code>tmux</code> session.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// /datalab/web/socketio_to_pty.js:53
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>spawnProcess</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;tmux&#39;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>processArgs</span> <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#39;new-session&#39;</span>, <span style=color:#e6db74>&#39;-A&#39;</span>, <span style=color:#e6db74>&#39;-D&#39;</span>, <span style=color:#e6db74>&#39;-s&#39;</span>, <span style=color:#e6db74>&#39;0&#39;</span>];
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>kernelContainerName</span> <span style=color:#f92672>!==</span> <span style=color:#e6db74>&#39;&#39;</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>processArgs</span> <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#39;exec&#39;</span>, <span style=color:#e6db74>&#39;-it&#39;</span>, <span style=color:#e6db74>&#39;-w&#39;</span>, <span style=color:#e6db74>&#39;/content&#39;</span>, <span style=color:#a6e22e>kernelContainerName</span>, <span style=color:#a6e22e>spawnProcess</span>].<span style=color:#a6e22e>concat</span>(<span style=color:#a6e22e>processArgs</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>spawnProcess</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;docker&#39;</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pty</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>nodePty</span>.<span style=color:#a6e22e>spawn</span>(<span style=color:#a6e22e>spawnProcess</span>, <span style=color:#a6e22e>processArgs</span>, {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;xterm-color&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cwd</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;./content&#39;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Pass environment variables
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>env</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>env</span>,
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><p>Whenever the Colab terminal is opened in the browser, this code spawns the <code>tmux</code> session. The spawning of the
+psuedoterminal also highlights the passing of environment variables! I decided to debug the running server to
+look closer. To do so I sent the user signal to the process (refer to the PID from aboves <code>ps -aux</code>):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>kill -USR1 <span style=color:#ae81ff>8</span>
+</span></span></code></pre></div><p>&mldr;and attached to it with:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>/tools/node/bin/node inspect -p <span style=color:#ae81ff>8</span>
+</span></span></code></pre></div><p>In the debugger I set a breakpoint around <code>socketio_to_pty.js:53</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>debug&gt; setBreakpoint<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;socketio_to_pty.js&#34;</span>, 53<span style=color:#f92672>)</span>
+</span></span></code></pre></div><p>Then in the browser I opened the Colab terminal which triggered the breakpoint.</p><p><img src=https://user-images.githubusercontent.com/3421544/160939415-bb533170-8a15-4f72-8bc6-1ad5d42e6117.png alt="debug breakpoint"></p><p>Printing out the <code>process.env</code> in the <code>repl</code> shows the extra environment variables.</p><p><img src=https://user-images.githubusercontent.com/3421544/160938928-06d1f559-29c9-4f7b-a8ce-91d62ab140a2.png alt="debug repl"></p><p>With the knowledge about the SSH session, <code>docker-init</code>, and debugged server I came to the thought that the
+environment variables were most likely present from the actual <code>docker run</code> invocation of the container. This
+could be why a new shell would not have the variables whereas a psuedoterminal spawned from
+the initial process might.</p><h2 id=deciding-on-the-approach>Deciding on the approach</h2><p>After witnessing how the <code>tmux</code> session was started in the Colab terminal I decided to mimic it as closely as
+possibly in my <a href=https://github.com/jjgp/colab/blob/main/notebooks/ngrok.ipynb>ngrok.ipynb</a>. To do so I read the
+source for how <a href=https://github.com/microsoft/node-pty>node-pty</a> passed the <code>env</code> property: <a href=https://github.com/microsoft/node-pty/blob/1674722e1caf3ff4dd52438b70ed68d46af83a6d/src/unixTerminal.ts#L282>src/unixTerminal.ts#L282</a>
+and <a href=https://github.com/microsoft/node-pty/blob/1674722e1caf3ff4dd52438b70ed68d46af83a6d/src/terminal.ts#L197>src/terminal.ts#L197</a>.
+Long story short, I took a rather circuitous path to simply hardcode and pass some environment variables. Anyways, I can now
+confidently remote SSH into a Colab instance and even use my favorite VS Code setup.</p></article></main><footer id=footer>Copyright © 2022 Jason Prasad</footer></body></html>
