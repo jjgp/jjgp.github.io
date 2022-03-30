@@ -1,7 +1,6 @@
 ---
 title: Setting up a development environment for LLVM
 date: "2020-05-24T15:38:44Z"
-description: Lessons learned from writing an LLVM pass 
 ---
 
 For my course in [software analysis](https://omscs.gatech.edu/cs-6340-software-analysis) I found the need to assemble a

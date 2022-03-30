@@ -1,7 +1,6 @@
 ---
 title: Building a PC
 date: "2019-03-21T14:40:45Z"
-description: Building a PC for machine and continued learning
 ---
 
 ![pc](https://user-images.githubusercontent.com/3421544/160841542-44168773-99af-4f1f-8b02-bafd8f3e2385.jpg)
