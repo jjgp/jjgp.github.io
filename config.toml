@@ -1,6 +1,7 @@
 baseURL = "https://jjgp.github.io/"
 languageCode = "en-us"
 title = "Jason Prasad"
+theme = "etch"
 
 [params]
   description = "Your siate description"
