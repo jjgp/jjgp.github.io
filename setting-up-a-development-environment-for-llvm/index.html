@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Your siate description"><link rel="shortcut icon" href=https://jjgp.github.io/favicon.ico><link rel=stylesheet href=/css/style.min.css><title>Setting up a development environment for LLVM</title></head><body><header id=banner><h2><a href=https://jjgp.github.io/>Jason Prasad</a></h2><nav><ul></ul></nav></header><main id=content><article><header id=post-header><h1>Setting up a development environment for LLVM</h1><div><time>May 24, 2020</time></div></header><p>For my course in <a href=https://omscs.gatech.edu/cs-6340-software-analysis>software analysis</a> I found the need to assemble a
+development environment to streamline my work with LLVM. The setup can be found on GitHub at
+<a href=https://github.com/jjgp/llvm-development>jjgp/llvm-development</a>.</p><p>Briefly, it contains a Dockerfile, VS Code Remote-Containers <code>devcontainer.json</code>, and the structure for a very simple
+LLVM pass.</p><p>The Dockerfile builds and Ubuntu 18.04 image with Clang, LLDB, and LLVM built with debug assertions enabled. This is
+necessary to enable the use of the <a href=https://llvm.org/docs/ProgrammersManual.html#the-llvm-debug-macro-and-debug-option>LLVM_DEBUG</a> macro. Having been my first time building the LLVM toolchain in a Docker
+image, I did use <a href=https://github.com/pytorch/pytorch/blob/master/.circleci/docker/common/install_llvm.sh>Pytorch&rsquo;s</a> CircleCI Dockerfile as a starting point. The image took over a half an hour to build on my 2015 MacBook Pro and
+required more memory allotted in the Docker resource settings. Without bumping up the memory, the LLVM build process
+would run out of it and emit a failure. The actual built image may be found on dockerhub at
+<a href=https://hub.docker.com/repository/docker/jjgp/llvm-development>jjgp/llvm-development</a>.</p><p>The VS Code <a href=https://code.visualstudio.com/docs/remote/remote-overview>Remote Development extension</a> pack allows for
+development in a container. The jjgp/llvm-development Git repository has a <code>devcontainer.json</code> that points to the
+aforementioned dockerhub image, adds a couple useful VS Code extensions, as well as an additional <code>runArgs</code>. The
+<code>runArgs</code> allows for the use of LLDB. Without it, there will be an error thrown when attempting to use LLDB to
+debug a process such as LLVM&rsquo;s <code>opt</code> command.</p><p>To run the sample pass in the Git repository simple do the following:</p><pre tabindex=0><code>mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make
+</code></pre><p>Note that passing the <code>-DCMAKE_BUILD_TYPE=Debug</code> option retains the build symbols for debugging with GDB or LLDB.
+The above builds the SamplePass shared object that can be loaded as an LLVM pass with the <code>opt</code> command. See the
+Makefile in the root of the Git repository for an example of how to run the SamplePass.</p><p>To debug the pass do the following from the root of the Git repository:</p><pre tabindex=0><code>clang -emit-llvm -S -fno-discard-value-names -c -o samples/hello_world.ll samples/hello_world.c
+gdb opt
+b SamplePass::runOnModule
+# Make breakpoint pending on future shared library load? (y or [n]) y
+run -load build/SamplePass.so -samplepass -S samples/hello_world.ll -disable-output
+</code></pre><p>Then it should stop at the breakpoint!</p><pre tabindex=0><code>Breakpoint 1, (anonymous namespace)::SamplePass::runOnModule (this=0x555557d68940, M=...) at /workspaces/llvm-development/src/SamplePass.cpp:13
+13          bool modified = false;
+(gdb) n
+14          LLVM_DEBUG(dbgs() &lt;&lt; &#34;I&#39;m here!\n&#34;);
+(gdb) n
+15          return modified;
+(gdb)
+</code></pre></article></main><footer id=footer>Copyright © 2022 Jason Prasad</footer></body></html>

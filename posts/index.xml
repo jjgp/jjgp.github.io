@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Jason Prasad</title><link>https://jjgp.github.io/posts/</link><description>Recent content in Posts on Jason Prasad</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 24 May 2020 15:38:44 +0000</lastBuildDate><atom:link href="https://jjgp.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Setting up a development environment for LLVM</title><link>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</link><pubDate>Sun, 24 May 2020 15:38:44 +0000</pubDate><guid>https://jjgp.github.io/setting-up-a-development-environment-for-llvm/</guid><description>&lt;p>For my course in &lt;a href="https://omscs.gatech.edu/cs-6340-software-analysis">software analysis&lt;/a> I found the need to assemble a
+development environment to streamline my work with LLVM. The setup can be found on GitHub at
+&lt;a href="https://github.com/jjgp/llvm-development">jjgp/llvm-development&lt;/a>.&lt;/p>
+&lt;p>Briefly, it contains a Dockerfile, VS Code Remote-Containers &lt;code>devcontainer.json&lt;/code>, and the structure for a very simple
+LLVM pass.&lt;/p>
+&lt;p>The Dockerfile builds and Ubuntu 18.04 image with Clang, LLDB, and LLVM built with debug assertions enabled. This is
+necessary to enable the use of the &lt;a href="https://llvm.org/docs/ProgrammersManual.html#the-llvm-debug-macro-and-debug-option">LLVM_DEBUG&lt;/a> macro. Having been my first time building the LLVM toolchain in a Docker
+image, I did use &lt;a href="https://github.com/pytorch/pytorch/blob/master/.circleci/docker/common/install_llvm.sh">Pytorch&amp;rsquo;s&lt;/a> CircleCI Dockerfile as a starting point. The image took over a half an hour to build on my 2015 MacBook Pro and
+required more memory allotted in the Docker resource settings. Without bumping up the memory, the LLVM build process
+would run out of it and emit a failure. The actual built image may be found on dockerhub at
+&lt;a href="https://hub.docker.com/repository/docker/jjgp/llvm-development">jjgp/llvm-development&lt;/a>.&lt;/p>
+&lt;p>The VS Code &lt;a href="https://code.visualstudio.com/docs/remote/remote-overview">Remote Development extension&lt;/a> pack allows for
+development in a container. The jjgp/llvm-development Git repository has a &lt;code>devcontainer.json&lt;/code> that points to the
+aforementioned dockerhub image, adds a couple useful VS Code extensions, as well as an additional &lt;code>runArgs&lt;/code>. The
+&lt;code>runArgs&lt;/code> allows for the use of LLDB. Without it, there will be an error thrown when attempting to use LLDB to
+debug a process such as LLVM&amp;rsquo;s &lt;code>opt&lt;/code> command.&lt;/p>
+&lt;p>To run the sample pass in the Git repository simple do the following:&lt;/p>
+&lt;pre tabindex="0">&lt;code>mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make
+&lt;/code>&lt;/pre>&lt;p>Note that passing the &lt;code>-DCMAKE_BUILD_TYPE=Debug&lt;/code> option retains the build symbols for debugging with GDB or LLDB.
+The above builds the SamplePass shared object that can be loaded as an LLVM pass with the &lt;code>opt&lt;/code> command. See the
+Makefile in the root of the Git repository for an example of how to run the SamplePass.&lt;/p>
+&lt;p>To debug the pass do the following from the root of the Git repository:&lt;/p>
+&lt;pre tabindex="0">&lt;code>clang -emit-llvm -S -fno-discard-value-names -c -o samples/hello_world.ll samples/hello_world.c
+gdb opt
+b SamplePass::runOnModule
+# Make breakpoint pending on future shared library load? (y or [n]) y
+run -load build/SamplePass.so -samplepass -S samples/hello_world.ll -disable-output
+&lt;/code>&lt;/pre>&lt;p>Then it should stop at the breakpoint!&lt;/p>
+&lt;pre tabindex="0">&lt;code>Breakpoint 1, (anonymous namespace)::SamplePass::runOnModule (this=0x555557d68940, M=...) at /workspaces/llvm-development/src/SamplePass.cpp:13
+13 bool modified = false;
+(gdb) n
+14 LLVM_DEBUG(dbgs() &amp;lt;&amp;lt; &amp;#34;I&amp;#39;m here!\n&amp;#34;);
+(gdb) n
+15 return modified;
+(gdb)
+&lt;/code>&lt;/pre></description></item><item><title>Building a PC</title><link>https://jjgp.github.io/building-a-pc/</link><pubDate>Thu, 21 Mar 2019 14:40:45 +0000</pubDate><guid>https://jjgp.github.io/building-a-pc/</guid><description>&lt;p>&lt;img src="https://user-images.githubusercontent.com/3421544/160841542-44168773-99af-4f1f-8b02-bafd8f3e2385.jpg" alt="pc">&lt;/p>
+&lt;p>Having read a few posts about building a computer for machine and deep learning
+I had become inspired to build one of my own.&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://towardsdatascience.com/build-and-setup-your-own-deep-learning-server-from-scratch-e771dacaa252">Build and Setup Your Own Deep Learning Server From Scratch&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://medium.com/@aragalie/build-your-own-top-spec-remote-access-machine-learning-rig-a-very-detailed-assembly-and-dae0f4011a8f">Build your own top-spec remote-access Machine Learning rig: &amp;hellip;&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://medium.com/the-mission/how-to-build-the-perfect-deep-learning-computer-and-save-thousands-of-dollars-9ec3b2eb4ce2">How to build the perfect Deep Learning Computer and save thousands of dollars&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Of course there are resources in the wild to utilize GPUs that are either free
+or cheap (&lt;a href="https://notebooks.azure.com/">Azure&lt;/a>,
+&lt;a href="https://www.paperspace.com/">Paperspace&lt;/a>,
+&lt;a href="https://towardsdatascience.com/kaggle-vs-colab-faceoff-which-free-gpu-provider-is-tops-d4f0cd625029">Kaggle, and Colab&lt;/a>),
+however, I wanted to experience more than that. I wanted to understand in
+greater detail what parts there were and how they went together. I wanted to
+know what is involved in setting up remote resources and even enable
+development from my Macbook or my iPad Pro with
+&lt;a href="https://www.termius.com/">Termius&lt;/a>, &lt;a href="https://github.com/blinksh/blink">Blink&lt;/a>, and &lt;a href="https://juno.sh/">Juno&lt;/a>.&lt;/p>
+&lt;h2 id="the-parts">The Parts&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>CPU:&lt;/strong> AMD Threadripper 2950X&lt;/li>
+&lt;li>&lt;strong>CPU Cooler:&lt;/strong> Corsair H100i v2&lt;/li>
+&lt;li>&lt;strong>Motherboard:&lt;/strong> ASRock X399 Taichi&lt;/li>
+&lt;li>&lt;strong>Memory:&lt;/strong> Corsair Vengeance LPX 2 x 16 GB&lt;/li>
+&lt;li>&lt;strong>Storage:&lt;/strong> Samsung 960 EVO 500 GB M.2-2280 SSD, Seagate Barracuda 2 TB 3.5&amp;quot; HDD, WD 2 TB 3.5&amp;quot; HDD (repurposed from an external drive)&lt;/li>
+&lt;li>&lt;strong>Video Card:&lt;/strong> NVIDIA GeForce RTX 2070&lt;/li>
+&lt;li>&lt;strong>Case:&lt;/strong> Corsair Air 540&lt;/li>
+&lt;li>&lt;strong>Power Supply:&lt;/strong> Corsair 1000 W 80+ Platinum&lt;/li>
+&lt;/ul>
+&lt;p>Apart from perusing the aforementioned posts on building machine learning rigs,
+&lt;a href="https://pcpartpicker.com/user/jjgp/saved/33ZV6h">PCPartPicker&lt;/a> (links to my
+part list) and its compatibility check was perhaps the most informative
+resource. My process wasn&amp;rsquo;t very scientific and I even splurged on the CPU. I
+did make sure to pick a motherboard, CPU, and PSU could support more GPUs or
+other PCIe devices in the future. In researching which GPU to use I defaulted
+to the judgment outlined in the following: &lt;a href="http://timdettmers.com/2018/11/05/which-gpu-for-deep-learning/">Which GPU(s) to Get for Deep Learning: &amp;hellip;&lt;/a>&lt;/p>
+&lt;p>A few things needed for setup include: a grounding cable, thermal paste,
+isopropyl alcohol, and a magnetic screw set. The grounding cable is worn at all
+times during assembly. The thermal paste is to facilitate the heat transfer between
+the CPU and the cooler. The Corsair H100i v2 came with some thermal paste on
+it. I opted to clean that off with isopropyl alcohol and apply the thermal paste I had
+bought.&lt;/p>
+&lt;h2 id="putting-it-together">Putting it Together&lt;/h2>
+&lt;p>The most time consuming part of putting the computer together (from the
+perspective of a noob) is gathering the information about assembly. I watched
+a lot of YouTube, read blog posts, and reread the manuals. The most
+informative video I found (and mentioned in one of the blogs above) is
+&lt;a href="https://www.youtube.com/watch?v=83mA2TGNRCU">Fractal Design Define C TG / MSI X399 Gaming Pro Carbon&lt;/a>.
+After becoming somewhat familiar with the whole process I began assembly. It
+is recommended to assemble the motherboard, CPU, CPU cooler, SSD, and
+RAM outside of the case to power it on and inspect for parts that may be DOA.
+I just followed the steps in the aformentioned Fractal Design video and forewent
+powering it on outside because the parts were swimming in space in the Corsair Air
+540 and easy to assemble / disassemble.&lt;/p>
+&lt;p>A few tidbits that caused some confusion and specific to this setup are as
+follows: The hard drive bays in the Corsair Air 540 took more force than I had
+realized to properly attach. The post codes on the Dr. Debug output were at
+first esoteric and I had to research the forums (&lt;a href="http://forum.asrock.com/forum_posts.asp?TID=3110&amp;amp;title=dr-debug-display-aa">Dr. Debug display AA&lt;/a>)
+and consult the manual. The Taichi BIOS will show the CPU temperature as higher
+than it actually is (&lt;a href="http://forum.asrock.com/forum_posts.asp?TID=6912&amp;amp;title=x399-taichi-cpu-temperature">X399 Taichi CPU Temperature&lt;/a>).
+The motherboard cables from the case to the power, reset, and LED had triangles
+to mark the positive leads.&lt;/p>
+&lt;h2 id="the-oses">The OSes&lt;/h2>
+&lt;p>As is recommended by the sources I have read and personally, Windows is best
+installed first. The Taichi BIOS update software only supports Windows and
+having a partition for it serves as a failsafe. To install Windows I created
+a UEFI GPT bootable USB with a Windows installer and using Rufus. Since I have a
+Mac I had to install Windows through Bootcamp to accomplish this. After
+creating the bootable USB, I selected it as the boot media through the Taichi
+BIOS and followed the steps to install.&lt;/p>
+&lt;p>Once Windows was installed on the Samsung 960 EVO I installed the following
+apps for maintenance: &lt;a href="http://www.asrock.com/feature/appshop/">ASRock APP Shop&lt;/a>,
+&lt;a href="https://www.amd.com/en/technologies/ryzen-master">AMD RYZEN Master&lt;/a>, and
+&lt;a href="https://www.corsair.com/us/en/corsairlink">CORSAIR LINK&lt;/a>. With Windows I
+created a partition and a UEFI GPT bootable USB with the Ubuntu installer. To
+install I simply chose to boot from the USB from the BIOS and followed the
+install steps.&lt;/p>
+&lt;h2 id="cuda-install">Cuda Install&lt;/h2>
+&lt;p>The CUDA install was perhaps the most frustrating part. Mostly because there is
+a lot of information to digest at the &lt;a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html">NVIDIA CUDA Installation Guide for Linux&lt;/a>
+and steps can be unclear such as which option to choose to download the
+&lt;a href="https://developer.nvidia.com/cuda-downloads">CUDA Toolkit&lt;/a>.
+The most straightforward way to go about it is outlined at the following:
+&lt;a href="https://www.pugetsystems.com/labs/hpc/How-To-Install-CUDA-10-together-with-9-2-on-Ubuntu-18-04-with-support-for-NVIDIA-20XX-Turing-GPUs-1236/">How To Install CUDA 10&amp;hellip;&lt;/a>.
+In short, it&amp;rsquo;s to download the deb (network) CUDA Toolkit and follow the steps
+there. I had tried deb (local) and it just lead to unmet dependency issues.&lt;/p>
+&lt;h2 id="remote-access">Remote Access&lt;/h2>
+&lt;p>&lt;img src="https://user-images.githubusercontent.com/3421544/160841654-715d2524-0fee-44c3-93d0-c0f753879afa.jpg" alt="pi">&lt;/p>
+&lt;p>Most of my use of the PC will be remotely. To facilitate that I set up the
+following: &lt;a href="https://help.ubuntu.com/community/WakeOnLan">WakeOnLan&lt;/a>,
+&lt;a href="https://help.ubuntu.com/lts/serverguide/openssh-server.html.en">OpenSSH&lt;/a>,
+&lt;a href="https://www.realvnc.com/">Real VNC&lt;/a>, and &lt;a href="https://www.noip.com/">No-IP&lt;/a>.
+As my router does not support the broadcasting of magic packets to wake the
+computer from a nonlocal network, I set up a Raspberry Pi on the local network
+to do so. Essentially I can SSH into the Raspberry Pi (even with &lt;a href="https://www.termius.com/">Termius&lt;/a>
+on my iPhone) and use &lt;a href="https://www.mkssoftware.com/docs/man1/etherwake.1.asp">etherwake&lt;/a>
+to turn on my PC.&lt;/p>
+&lt;p>The next things I&amp;rsquo;ve planned for my PC are to setup a development environment
+for machine learning!&lt;/p></description></item></channel></rss>
