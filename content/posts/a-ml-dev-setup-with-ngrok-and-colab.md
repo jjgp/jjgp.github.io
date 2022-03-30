@@ -3,10 +3,10 @@ title: A ML Dev Setup with ngrok and Colab
 date: "2022-03-30T00:00:00Z"
 ---
 
-As a user of a mac with a M1 chip, I often have to run into the obstacle of
+As a user of a mac with a M1 chip, I often run into the obstacle of
 dependencies without support for the arm64 architecture. It leads to
 building the dependency locally, using a container or virtual machine, a
-remote instance, or finding an another dependency with similar features. For
+remote instance, or finding another dependency with similar features. For
 this reason, I was drawn to the many examples of connecting through SSH to
 a Colab instance: [ColabCode](https://github.com/abhishekkrthakur/colabcode), 
 [colab-ssh](https://github.com/WassimBenzarti/colab-ssh), [colab-tricks](https://github.com/shawwn/colab-tricks).
@@ -101,7 +101,7 @@ root        1112  0.0  0.0  36080  3268 pts/0    R+   21:29   0:00 ps -aux
 
 So the instance is certainly a container and the initial process is kicked off by some `/datalab/run.sh` that
 starts a node `/datalab/web/app.js` process. There is a Jupyter/IPython notebook process, dap_multiplexer (which
-stands for "Debug Adapter Protocol" as found in the `/datalab/web` files), a `colab-fileshim.py` Python process (I think used for the Colab file browser?), a [pyright](https://github.com/microsoft/pyright) language server, a [debugpy](https://github.com/microsoft/debugpy) process, a `tmux` session (hmmmm), and among others... I saw all these processes
+stands for "Debug Adapter Protocol" as found in the `/datalab/web` files), a `colab-fileshim.py` Python process (I think is used for the Colab file browser?), a [pyright](https://github.com/microsoft/pyright) language server, a [debugpy](https://github.com/microsoft/debugpy) process, a `tmux` session (hello again), and among others... I saw all these processes
 and thought about what I could debug. The `/datalab/web/app.js` seemed like a good place to start.
 
 ## Debugging the datalab proxy server
@@ -161,9 +161,9 @@ the initial process might.
 
 ## Deciding on the approach
 
-After witnessing how the `tmux` session was started in the Colab terminal I decided to mimic it as closely as
+After witnessing how the `tmux` session was started for the Colab terminal I decided to mimic it as closely as
 possibly in my [ngrok.ipynb](https://github.com/jjgp/colab/blob/main/notebooks/ngrok.ipynb). To do so I read the
 source for how [node-pty](https://github.com/microsoft/node-pty) passed the `env` property: [src/unixTerminal.ts#L282](https://github.com/microsoft/node-pty/blob/1674722e1caf3ff4dd52438b70ed68d46af83a6d/src/unixTerminal.ts#L282) 
 and [src/terminal.ts#L197](https://github.com/microsoft/node-pty/blob/1674722e1caf3ff4dd52438b70ed68d46af83a6d/src/terminal.ts#L197). 
 Long story short, I took a rather circuitous path to simply hardcode and pass some environment variables. Anyways, I can now
-confidently remote SSH into a Colab instance and even use my favorite VS Code setup.
+confidently SSH into a Colab instance and even use my favorite VS Code setup.
