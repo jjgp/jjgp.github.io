@@ -1,3 +1,12 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://jjgp.github.io/"
+languageCode = "en-us"
+title = "Jason Prasad"
+
+[params]
+  description = "Your siate description"
+  copyright = "Copyright © 2022 Jason Prasad"
+  dark = "auto"
+  highlight = true
+
+[permalinks]
+  posts = "/:title/"
