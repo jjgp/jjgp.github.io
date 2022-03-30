@@ -4,14 +4,14 @@ date: "2019-03-21T14:40:45Z"
 description: Building a PC for machine and continued learning
 ---
 
-![pc](./pc.jpg)
+![pc](https://user-images.githubusercontent.com/3421544/160841542-44168773-99af-4f1f-8b02-bafd8f3e2385.jpg)
 
 Having read a few posts about building a computer for machine and deep learning
 I had become inspired to build one of my own.
 
-> - [Build and Setup Your Own Deep Learning Server From Scratch](https://towardsdatascience.com/build-and-setup-your-own-deep-learning-server-from-scratch-e771dacaa252)
-> - [Build your own top-spec remote-access Machine Learning rig: ...](https://medium.com/@aragalie/build-your-own-top-spec-remote-access-machine-learning-rig-a-very-detailed-assembly-and-dae0f4011a8f)
-> - [How to build the perfect Deep Learning Computer and save thousands of dollars](https://medium.com/the-mission/how-to-build-the-perfect-deep-learning-computer-and-save-thousands-of-dollars-9ec3b2eb4ce2)
+- [Build and Setup Your Own Deep Learning Server From Scratch](https://towardsdatascience.com/build-and-setup-your-own-deep-learning-server-from-scratch-e771dacaa252)
+- [Build your own top-spec remote-access Machine Learning rig: ...](https://medium.com/@aragalie/build-your-own-top-spec-remote-access-machine-learning-rig-a-very-detailed-assembly-and-dae0f4011a8f)
+- [How to build the perfect Deep Learning Computer and save thousands of dollars](https://medium.com/the-mission/how-to-build-the-perfect-deep-learning-computer-and-save-thousands-of-dollars-9ec3b2eb4ce2)
 
 Of course there are resources in the wild to utilize GPUs that are either free
 or cheap ([Azure](https://notebooks.azure.com/),
@@ -25,14 +25,14 @@ development from my Macbook or my iPad Pro with
 
 ## The Parts
 
-**CPU:** AMD Threadripper 2950X  
-**CPU Cooler:** Corsair H100i v2  
-**Motherboard:** ASRock X399 Taichi  
-**Memory:** Corsair Vengeance LPX 2 x 16 GB  
-**Storage:** Samsung 960 EVO 500 GB M.2-2280 SSD, Seagate Barracuda 2 TB 3.5" HDD, WD 2 TB 3.5" HDD (repurposed from an external drive)  
-**Video Card:** NVIDIA GeForce RTX 2070  
-**Case:** Corsair Air 540  
-**Power Supply:** Corsair 1000 W 80+ Platinum
+- **CPU:** AMD Threadripper 2950X  
+- **CPU Cooler:** Corsair H100i v2  
+- **Motherboard:** ASRock X399 Taichi  
+- **Memory:** Corsair Vengeance LPX 2 x 16 GB  
+- **Storage:** Samsung 960 EVO 500 GB M.2-2280 SSD, Seagate Barracuda 2 TB 3.5" HDD, WD 2 TB 3.5" HDD (repurposed from an external drive)  
+- **Video Card:** NVIDIA GeForce RTX 2070  
+- **Case:** Corsair Air 540  
+- **Power Supply:** Corsair 1000 W 80+ Platinum
 
 Apart from perusing the aforementioned posts on building machine learning rigs,
 [PCPartPicker](https://pcpartpicker.com/user/jjgp/saved/33ZV6h) (links to my
@@ -103,7 +103,7 @@ there. I had tried deb (local) and it just lead to unmet dependency issues.
 
 ## Remote Access
 
-![pi](./pi.jpg)
+![pi](https://user-images.githubusercontent.com/3421544/160841654-715d2524-0fee-44c3-93d0-c0f753879afa.jpg)
 
 Most of my use of the PC will be remotely. To facilitate that I set up the
 following: [WakeOnLan](https://help.ubuntu.com/community/WakeOnLan), 
