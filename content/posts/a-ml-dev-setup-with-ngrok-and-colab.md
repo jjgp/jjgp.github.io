@@ -9,7 +9,8 @@ building the dependency locally, using a container or virtual machine, a
 remote instance, or finding another dependency with similar features. For
 this reason, I was drawn to the many examples of connecting through SSH to
 a Colab instance: [ColabCode](https://github.com/abhishekkrthakur/colabcode), 
-[colab-ssh](https://github.com/WassimBenzarti/colab-ssh), [colab-tricks](https://github.com/shawwn/colab-tricks).
+[colab-ssh](https://github.com/WassimBenzarti/colab-ssh), [colab-tricks](https://github.com/shawwn/colab-tricks), 
+[remocolab](https://github.com/demotomohiro/remocolab).
 As an exercise in understanding the previous approaches I decided to implement
 a solution myself. The full process has been accumated into [ngrok.ipynb](https://github.com/jjgp/colab/blob/main/notebooks/ngrok.ipynb).
 
@@ -110,8 +111,8 @@ In perusing the `/datalab/` folder on the Colab instance it became clear that it
 Jupyter notebook server and setup a few sockets and the other processes. One of those sockets was found in the source
 `/datalab/web/socketio_to_pty.js` file. The file implemented a [socketio](https://socket.io/) websocket and a [node-pty](https://github.com/microsoft/node-pty) pseudoterminal. Also in the source was the setup of a `tmux` session.
 
-```javascript
-// /datalab/web/socketio_to_pty.js:53
+```js
+// socketio_to_pty.js:53
 var spawnProcess = 'tmux';
 var processArgs = ['new-session', '-A', '-D', '-s', '0'];
 if (kernelContainerName !== '') {
