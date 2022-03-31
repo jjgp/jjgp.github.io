@@ -1,0 +1,34 @@
+<style>
+.btn {
+  margin-right: 12px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+}
+</style>
+<div>
+  <canvas id="canvas" width="200" height="200"></canvas>
+  <div class="btns">
+    <button class="btn" id="record-btn" onclick="record()">Record</button>
+    <button class="btn" disabled=true id="play-btn" onclick="play()">Play</button>
+    <button class="btn" disabled=true id="predict-btn" onclick="predict()">Predict</button>
+  </div>
+</div>
+<script src="/js/adapter.js"></script>
+<script>
+  const audioContext = new window.AudioContext();
+  const constraints =  { audio: true, video: false };
+  const playBtn = document.getElementById('play-btn');
+  const recordBtn = document.getElementById('record-btn');
+  const predictBtn = document.getElementById('predict-btn');
+
+  let source;
+  // navigator.mediaDevices.getUserMedia(constraints)
+  //   .then(stream => {
+  //     source = audioContext.createMediaStreamSource(stream);
+  //     console.log(source);
+  //   })
+  //   .catch(console.log);
+</script>

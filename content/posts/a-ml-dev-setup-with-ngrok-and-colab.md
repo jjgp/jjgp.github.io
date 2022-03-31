@@ -110,8 +110,8 @@ In perusing the `/datalab/` folder on the Colab instance it became clear that it
 Jupyter notebook server and setup a few sockets and the other processes. One of those sockets was found in the source
 `/datalab/web/socketio_to_pty.js` file. The file implemented a [socketio](https://socket.io/) websocket and a [node-pty](https://github.com/microsoft/node-pty) pseudoterminal. Also in the source was the setup of a `tmux` session.
 
-```javascript
-// /datalab/web/socketio_to_pty.js:53
+```js
+// socketio_to_pty.js:53
 var spawnProcess = 'tmux';
 var processArgs = ['new-session', '-A', '-D', '-s', '0'];
 if (kernelContainerName !== '') {
