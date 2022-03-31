@@ -4,7 +4,8 @@ building the dependency locally, using a container or virtual machine, a
 remote instance, or finding another dependency with similar features. For
 this reason, I was drawn to the many examples of connecting through SSH to
 a Colab instance: &lt;a href="https://github.com/abhishekkrthakur/colabcode">ColabCode&lt;/a>,
-&lt;a href="https://github.com/WassimBenzarti/colab-ssh">colab-ssh&lt;/a>, &lt;a href="https://github.com/shawwn/colab-tricks">colab-tricks&lt;/a>.
+&lt;a href="https://github.com/WassimBenzarti/colab-ssh">colab-ssh&lt;/a>, &lt;a href="https://github.com/shawwn/colab-tricks">colab-tricks&lt;/a>,
+&lt;a href="https://github.com/demotomohiro/remocolab">remocolab&lt;/a>.
 As an exercise in understanding the previous approaches I decided to implement
 a solution myself. The full process has been accumated into &lt;a href="https://github.com/jjgp/colab/blob/main/notebooks/ngrok.ipynb">ngrok.ipynb&lt;/a>.&lt;/p>
 &lt;h2 id="a-brief-explanation-of-the-process">A brief explanation of the process&lt;/h2>
@@ -83,7 +84,7 @@ and thought about what I could debug. The &lt;code>/datalab/web/app.js&lt;/code>
 &lt;p>In perusing the &lt;code>/datalab/&lt;/code> folder on the Colab instance it became clear that it was a server that proxied the
 Jupyter notebook server and setup a few sockets and the other processes. One of those sockets was found in the source
 &lt;code>/datalab/web/socketio_to_pty.js&lt;/code> file. The file implemented a &lt;a href="https://socket.io/">socketio&lt;/a> websocket and a &lt;a href="https://github.com/microsoft/node-pty">node-pty&lt;/a> pseudoterminal. Also in the source was the setup of a &lt;code>tmux&lt;/code> session.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// /datalab/web/socketio_to_pty.js:53
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// socketio_to_pty.js:53
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">spawnProcess&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;tmux&amp;#39;&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">processArgs&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;new-session&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;-A&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;-D&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;-s&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;0&amp;#39;&lt;/span>];
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">kernelContainerName&lt;/span> &lt;span style="color:#f92672">!==&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>) {
